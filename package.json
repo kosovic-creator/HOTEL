@@ -1,0 +1,30 @@
+{
+  "name": "hotel-monorepo",
+  "version": "1.0.0",
+  "description": "Hotel monorepo - admin dashboard i gost aplikacija",
+  "private": true,
+  "packageManager": "npm@11.0.0",
+  "workspaces": [
+    "shared-prisma",
+    "m-hotel-admin",
+    "m-hotel-gost"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w m-hotel-admin\" \"npm run dev -w m-hotel-gost\"",
+    "dev:admin": "npm run dev -w m-hotel-admin",
+    "dev:gost": "npm run dev -w m-hotel-gost",
+    "build:admin": "npm run build -w m-hotel-admin",
+    "build:gost": "npm run build -w m-hotel-gost",
+    "build": "npm run build:admin && npm run build:gost",
+    "start:admin": "npm run start -w m-hotel-admin",
+    "start:gost": "npm run start -w m-hotel-gost",
+    "prisma:generate": "npm run generate -w shared-prisma",
+    "prisma:migrate:dev": "npm run migrate:dev -w shared-prisma",
+    "prisma:migrate:deploy": "npm run migrate:deploy -w shared-prisma",
+    "prisma:studio": "npm run studio -w shared-prisma",
+    "prisma:push": "npm run push -w shared-prisma"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

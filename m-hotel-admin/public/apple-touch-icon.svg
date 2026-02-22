@@ -1,0 +1,17 @@
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="180" height="180" fill="#DC2626" rx="20"/>
+
+  <!-- Circle with emoji effect -->
+  <circle cx="90" cy="70" r="25" fill="#ffffff" stroke="#DC2626" stroke-width="3"/>
+
+  <!-- X mark in circle -->
+  <line x1="80" y1="60" x2="100" y2="80" stroke="#DC2626" stroke-width="4" stroke-linecap="round"/>
+  <line x1="100" y1="60" x2="80" y2="80" stroke="#DC2626" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- M-HOTEL text -->
+  <text x="90" y="115" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">M-HOTEL</text>
+
+  <!-- Admin text -->
+  <text x="90" y="140" font-family="Arial, sans-serif" font-size="16" font-weight="normal" fill="#ffffff" text-anchor="middle">Admin</text>
+</svg>

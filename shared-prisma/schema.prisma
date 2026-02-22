@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Korisnik {
+  id      Int     @id @default(autoincrement())
+  email   String  @unique
+  ime     String?
+  lozinka String?
+  uloga   String  @default("admin")
+}
+
+model Soba {
+  id          Int           @id @default(autoincrement())
+  broj        String        @unique
+  tip         String
+  opis        String
+  kapacitet   Int
+  cena        Float
+  slike       String[]
+  tip_en      String
+  opis_en     String
+  rezervacije Rezervacija[]
+}
+
+model Gost {
+  id                  Int           @id @default(autoincrement())
+  titula              String        @default("N/A")
+  ime                 String
+  prezime             String
+  titula_drugog_gosta   String?
+  ime_drugog_gosta    String?
+  prezime_drugog_gosta String?
+  adresa              String?
+  grad                String?
+  drzava              String        @default("N/A")
+  email               String        @unique
+  mob_telefon         String?       @map("telefon")
+  rezervacije         Rezervacija[]
+}
+
+model Rezervacija {
+  id         Int      @id @default(autoincrement())
+  soba       Soba     @relation(fields: [sobaBroj], references: [broj])
+  sobaBroj   String
+  gost       Gost     @relation(fields: [gostId], references: [id])
+  gostId     Int
+  prijava    DateTime
+  odjava     DateTime
+  broj_osoba Int      @default(1)
+  popust     Float    @default(0) // popust u procentima (0-100)
+  status     String // npr. "na čekanju", "potvrđeno", "otkazano"
+  kreirano   DateTime @default(now())
+  azurirano  DateTime @updatedAt
+}
+
+model Student {
+  id  Int    @id @default(autoincrement())
+  ime String
+}
