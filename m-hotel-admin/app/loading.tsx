@@ -1,4 +1,4 @@
-import { Skeleton } from '@hotel/ui/ui/skeleton';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const LoadingPage = () => {
   return (

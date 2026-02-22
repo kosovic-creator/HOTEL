@@ -1,12 +1,12 @@
 'use client';
 
-import { Calendar } from '@hotel/ui/ui/calendar';
-import { Button } from '@hotel/ui/ui/button';
+import { Calendar } from '@/components/ui/calendar';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { DayButton } from 'react-day-picker';
-import { Card, CardContent, CardHeader, CardTitle } from '@hotel/ui/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useI18n } from '@/components/I18nProvider';
 import { useTranslation } from 'react-i18next';
 

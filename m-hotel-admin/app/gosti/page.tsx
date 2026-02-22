@@ -3,9 +3,9 @@ import { ucitajGoste } from '@/actions/gosti';
 import { obrisiGosta } from '@/actions/gosti';
 import { getLocaleMessages } from '@/i18n/i18n';
 import { Metadata } from 'next';
-import { Button } from '@hotel/ui/ui/button';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { SuccessMessage, ErrorMessage } from '@hotel/ui/messages/MessageComponents';
+import { SuccessMessage, ErrorMessage } from '@/components/messages/MessageComponents';
 import GostiContent from './GostiContent';
 import { getRequestLocale } from '@/lib/locale';
 

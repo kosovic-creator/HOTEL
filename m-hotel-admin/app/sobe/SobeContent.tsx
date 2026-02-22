@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Button } from '@hotel/ui/ui/button';
+import { Button } from '@/components/ui/button';
 import {
   Table,
   TableBody,
@@ -11,8 +11,8 @@ import {
   TableHead,
   TableHeader,
   TableRow
-} from '@hotel/ui/ui/table';
-import { ConfirmDialog } from '@hotel/ui/ui/dialog';
+} from '@/components/ui/table';
+import { ConfirmDialog } from '@/components/ui/dialog';
 import { useTranslation } from 'react-i18next';
 
 interface SobeContentProps {

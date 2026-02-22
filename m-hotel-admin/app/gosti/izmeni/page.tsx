@@ -1,5 +1,5 @@
 import { ucitajGostaId,updateGost} from '@/actions/gosti';
-import { FormWrapper, InputField, HiddenField } from '@hotel/ui/form/FormComponents';
+import { FormWrapper, InputField, HiddenField } from '@/components/form/FormComponents';
 import { getLocaleMessages } from '@/i18n/i18n';
 import { extractErrors, getFieldValue } from '@/lib/helpers/url';
 import { GostiSearchParams } from '@/lib/types/searchParams';

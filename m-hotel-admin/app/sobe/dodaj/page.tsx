@@ -1,5 +1,5 @@
 import { dodajSobu } from '@/actions/sobe';
-import { FormWrapper, InputField } from '@hotel/ui/form/FormComponents';
+import { FormWrapper, InputField } from '@/components/form/FormComponents';
 import { getLocaleMessages } from '@/i18n/i18n';
 import { ImageUpload } from '@/app/components/ImageUpload';
 import { SobaSearchParams } from '@/lib/types/searchParams';

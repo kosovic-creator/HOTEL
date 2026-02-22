@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { X, Upload } from 'lucide-react';
-import { Button } from '@hotel/ui/ui/button';
+import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
 interface ImageUploadProps {

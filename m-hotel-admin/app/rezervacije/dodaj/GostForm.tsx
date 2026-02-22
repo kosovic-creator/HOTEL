@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { InputField, SelectField } from '@hotel/ui/form/FormComponents';
+import { InputField, SelectField } from '@/components/form/FormComponents';
 import { useTranslation } from 'react-i18next';
 
 interface Gost {

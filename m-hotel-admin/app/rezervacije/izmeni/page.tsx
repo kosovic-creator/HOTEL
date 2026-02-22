@@ -1,5 +1,5 @@
 import { getRezervacijaById, izmeniRezervacijuSaGostom } from '@/actions/rezervacije';
-import { FormWrapper, InputField, HiddenField, SelectField } from '@hotel/ui/form/FormComponents';
+import { FormWrapper, InputField, HiddenField, SelectField } from '@/components/form/FormComponents';
 import { getLocaleMessages } from '@/i18n/i18n';
 import { prisma } from '@/lib/prisma';
 import { RezervacijaSearchParams } from '@/lib/types/searchParams';

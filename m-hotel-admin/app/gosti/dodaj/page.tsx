@@ -1,4 +1,4 @@
-import { FormWrapper, InputField } from '@hotel/ui/form/FormComponents';
+import { FormWrapper, InputField } from '@/components/form/FormComponents';
 import { getLocaleMessages } from '@/i18n/i18n';
 import { prisma } from '@/lib/prisma';
 import { extractErrors, getFieldValue } from '@/lib/helpers/url';

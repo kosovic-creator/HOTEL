@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import { Button } from '@hotel/ui/ui/button';
-import { Input } from '@hotel/ui/ui/input';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import {
   Table,
@@ -11,10 +11,10 @@ import {
   TableHead,
   TableHeader,
   TableRow
-} from '@hotel/ui/ui/table';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@hotel/ui/ui/tabs';
+} from '@/components/ui/table';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import RezervacijeKalendar from './RezervacijeKalendar';
-import { ConfirmDialog } from '@hotel/ui/ui/dialog';
+import { ConfirmDialog } from '@/components/ui/dialog';
 import { useMemo, useState, useTransition, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { rascunajUkupnuCenu, rascunajUkupnePrihode } from '@/lib/helpers/rezervacije';

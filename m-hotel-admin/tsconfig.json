@@ -1,5 +1,4 @@
 {
-  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "ES2017",
     "lib": [
@@ -33,15 +32,6 @@
       ],
       "@actions/*": [
         "actions/*"
-      ],
-      "@hotel/database": [
-        "../../packages/database"
-      ],
-      "@hotel/ui": [
-        "../../packages/ui"
-      ],
-      "@hotel/ui/*": [
-        "../../packages/ui/*"
       ]
     }
   },
@@ -51,10 +41,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-,
-"app/(test)/param/param-server/[id]/(pageKlient.tsx)"
-],
+    "**/*.mts",
+    "app/(test)/param/param-server/[id]/(pageKlient.tsx)"
+  ],
   "exclude": [
     "node_modules"
   ]

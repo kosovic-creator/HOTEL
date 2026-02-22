@@ -3,7 +3,7 @@ import { ucitajRezervacije } from '@/actions/rezervacije';
 import { ucitajSobe } from '@/actions/sobe';
 import { obrisiRezervaciju } from '@/actions/rezervacije';
 import { Metadata } from 'next';
-import { SuccessMessage, ErrorMessage } from '@hotel/ui/messages/MessageComponents';
+import { SuccessMessage, ErrorMessage } from '@/components/messages/MessageComponents';
 import RezervacijeContent from './RezervacijeContent';
 
 export const metadata: Metadata = {
