@@ -10,7 +10,21 @@
             "type": "node-terminal",
             "name": "Gost-Hotel: dev",
             "request": "launch",
-            "command": "npm run dev",
+            "command": "npm run dev:gost",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "node-terminal",
+            "name": "Admin-Hotel: dev:admin",
+            "request": "launch",
+            "command": "npm run dev:admin",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "node-terminal",
+            "name": "Gost-Hotel: dev:gost",
+            "request": "launch",
+            "command": "npm run dev:gost",
             "cwd": "${workspaceFolder}"
         }
     ]
