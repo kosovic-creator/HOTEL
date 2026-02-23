@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@hotel/ui';
 import RezervacijaDetalji, { useRezervacijaDetalji } from './RezervacijaDetalji';
 import RezervacijaPlacanje from './RezervacijaPlacanje';
 import { useI18n } from '@/i18n/I18nProvider';
@@ -21,7 +21,7 @@ interface RezervacijaWithPaymentProps {
   showPaymentOption?: boolean;
 }
 
-import { PrintButton } from '@/components/ui/print-button';
+import { PrintButton } from '@hotel/ui';
 
 export default function RezervacijaWithPayment({
   rezervacija,

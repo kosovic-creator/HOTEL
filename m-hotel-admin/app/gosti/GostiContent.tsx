@@ -3,8 +3,8 @@
 
 import { useState, useTransition } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Button } from '@hotel/ui';
+import { Input } from '@hotel/ui';
 import {
     Table,
     TableBody,
@@ -12,8 +12,8 @@ import {
     TableHead,
     TableHeader,
     TableRow
-} from '@/components/ui/table';
-import { ConfirmDialog } from '@/components/ui/dialog';
+} from '@hotel/ui';
+import { ConfirmDialog } from '@hotel/ui';
 import { useTranslation } from 'react-i18next';
 
 interface GostiContentProps {

@@ -3,9 +3,9 @@ import { getLocaleMessages } from '@/i18n/i18n';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { PrintButton } from '@/components/ui/print-button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@hotel/ui';
+import { PrintButton } from '@hotel/ui';
+import { Card, CardContent, CardHeader, CardTitle } from '@hotel/ui';
 import RezervacijaWithPayment from '@/components/rezervacije/RezervacijaWithPayment';
 import { getRequestLocale } from '@/lib/locale';
 

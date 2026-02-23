@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@hotel/ui";
+import { Input } from "@hotel/ui";
 import { registerSchema } from "@/app/validacija/authSchemas";
 import { useTranslation } from "react-i18next";
 

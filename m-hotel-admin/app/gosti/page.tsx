@@ -3,7 +3,7 @@ import { ucitajGoste } from '@/actions/gosti';
 import { obrisiGosta } from '@/actions/gosti';
 import { getLocaleMessages } from '@/i18n/i18n';
 import { Metadata } from 'next';
-import { Button } from '@/components/ui/button';
+import { Button } from '@hotel/ui';
 import Link from 'next/link';
 import { SuccessMessage, ErrorMessage } from '@/components/messages/MessageComponents';
 import GostiContent from './GostiContent';

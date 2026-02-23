@@ -2,9 +2,9 @@
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@hotel/ui";
+import { Input } from "@hotel/ui";
+import { Checkbox } from "@hotel/ui";
 import Link from "next/link";
 import { loginSchema } from "@/app/validacija/authSchemas";
 import { useTranslation } from "react-i18next";

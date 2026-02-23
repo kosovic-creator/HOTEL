@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@hotel/ui";
 
 const Map = dynamic(() => import("../components/Map"), { ssr: false });
 

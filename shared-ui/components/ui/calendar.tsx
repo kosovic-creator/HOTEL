@@ -12,9 +12,8 @@ import {
   type DayButton,
 } from "react-day-picker"
 
-import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { useI18n } from "@/components/I18nProvider"
+import { cn } from "../../lib/utils"
+import { Button, buttonVariants } from "./button"
 
 function Calendar({
   className,
@@ -22,13 +21,15 @@ function Calendar({
   showOutsideDays = true,
   captionLayout = "label",
   buttonVariant = "ghost",
+  lang,
   formatters,
   components,
   ...props
 }: React.ComponentProps<typeof DayPicker> & {
   buttonVariant?: React.ComponentProps<typeof Button>["variant"]
+  lang?: string
 }) {
-  const { lang } = useI18n()
+  const calendarLang = lang ?? "en"
   const defaultClassNames = getDefaultClassNames()
 
   return (
@@ -44,7 +45,7 @@ function Calendar({
       formatters={{
         formatMonthDropdown: (date) => {
           // Custom formatter for Serbian to ensure Latin script
-          if (lang === 'sr') {
+          if (calendarLang === "sr") {
             const monthsLatin = [
               'Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun',
               'Jul', 'Avg', 'Sep', 'Okt', 'Nov', 'Dec'
@@ -56,7 +57,7 @@ function Calendar({
         },
         formatCaption: (date) => {
           // Custom formatter for Serbian caption to ensure Latin script
-          if (lang === 'sr') {
+          if (calendarLang === "sr") {
             const monthsLatinFull = [
               'Januar', 'Februar', 'Mart', 'April', 'Maj', 'Juni',
               'Juli', 'Avgust', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'

@@ -20,8 +20,9 @@ npm run dev
 ```
 
 Aplikacije će biti dostupne na:
-- **Admin**: http://localhost:3000
-- **Gost**: http://localhost:4000
+
+- **Admin**: <http://localhost:3000>
+- **Gost**: <http://localhost:4000>
 
 ## Koristan komande
 
@@ -45,7 +46,6 @@ npm run prisma:push          # Push schema (bez migracija)
 
 ## Struktura
 
-```
 /Users/drasko/HOTEL/
 ├── m-hotel-admin/       # Admin app (port 3000)
 ├── m-hotel-gost/        # Gost app (port 4000)
@@ -54,7 +54,6 @@ npm run prisma:push          # Push schema (bez migracija)
 │   └── .env             # DATABASE_URL
 ├── package.json         # Root workspace config
 └── README.md            # Detaljne instrukcije
-```
 
 ## Troubleshooting
 

@@ -1,4 +1,4 @@
-import { Skeleton } from '@/components/ui/skeleton';
+import { Skeleton } from '@hotel/ui';
 import { getLocale } from '@/i18n/locale';
 import { getLocaleMessages } from '@/i18n/i18n';
 

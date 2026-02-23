@@ -3,7 +3,7 @@ import { getLocaleMessages } from '@/i18n/i18n';
 import { getLocale } from '@/i18n/locale';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@hotel/ui';
 import RezervacijaWithPayment from '../components/RezervacijaWithPayment';
 import { SuccessMessage } from '@/components/messages/MessageComponents';
 

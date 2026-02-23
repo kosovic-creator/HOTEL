@@ -1,12 +1,12 @@
 'use client';
 
-import { Calendar } from '@/components/ui/calendar';
-import { Button } from '@/components/ui/button';
+import { Calendar } from '@hotel/ui';
+import { Button } from '@hotel/ui';
 import { cn } from '@/lib/utils';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { DayButton } from 'react-day-picker';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@hotel/ui';
 import { useI18n } from '@/components/I18nProvider';
 import { useTranslation } from 'react-i18next';
 
@@ -259,6 +259,7 @@ export default function RezervacijeKalendar({
             modifiers={modifiers}
             modifiersStyles={modifiersStyles}
             components={{ DayButton: DayButtonCell }}
+            lang={lang}
             className="rounded-md border w-full"
           />
         </CardContent>

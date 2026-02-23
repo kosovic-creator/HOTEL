@@ -2,7 +2,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import { Button } from '@hotel/ui';
 import { useI18n } from '@/i18n/I18nProvider';
 
 interface SobeContentProps {

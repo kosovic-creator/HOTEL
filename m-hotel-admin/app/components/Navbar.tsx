@@ -2,7 +2,7 @@
 
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import { Button } from "@hotel/ui";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";

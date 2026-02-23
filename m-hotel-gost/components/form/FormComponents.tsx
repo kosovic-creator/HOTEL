@@ -1,6 +1,6 @@
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Button } from '@hotel/ui';
+import { Input } from '@hotel/ui';
 import { ReactNode } from 'react';
 
 type FormWrapperProps = {

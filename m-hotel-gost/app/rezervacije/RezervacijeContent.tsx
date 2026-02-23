@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Button } from '@hotel/ui';
+import { Input } from '@hotel/ui';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';

@@ -1,6 +1,7 @@
 # Hotel Monorepo
 
 Monorepo za hotel management sistem koji sadrži:
+
 - **m-hotel-admin** - Admin dashboard aplikacija (port 3000)
 - **m-hotel-gost** - Gost (client) aplikacija (port 4000)
 - **shared-prisma** - Zajednička Prisma database šema
@@ -51,16 +52,19 @@ npm run prisma:migrate:dev
 ### 4. Pokretanje aplikacija
 
 Pokretanje obe aplikacije:
+
 ```bash
 npm run dev
 ```
 
 Pokretanje samo admin aplikacije:
+
 ```bash
 npm run dev:admin
 ```
 
 Pokretanje samo gost aplikacije:
+
 ```bash
 npm run dev:gost
 ```
@@ -112,19 +116,20 @@ npm run <script> -w <workspace-name>
 
 Admin dashboard aplikacija za upravljanje hotelom.
 
-- **URL**: http://localhost:3000
+- **URL**: <http://localhost:3000>
 - **Features**: Upravljanje sobama, gostima, rezervacijama
 
 ### m-hotel-gost
 
 Client-facing aplikacija za goste hotela.
 
-- **URL**: http://localhost:4000
+- **URL**: <http://localhost:4000>
 - **Features**: Pregled soba, kreiranje rezervacija
 
 ## Development workflow
 
 1. Izmene u `shared-prisma/schema.prisma`:
+
    ```bash
    npm run prisma:migrate:dev
    npm run prisma:generate
@@ -133,6 +138,7 @@ Client-facing aplikacija za goste hotela.
 2. Izmene u aplikacijama - hot reload će automatski raditi
 
 3. Dodavanje novih zavisnosti u aplikacije:
+
    ```bash
    npm install <package> -w m-hotel-admin
    # ili
@@ -154,6 +160,7 @@ Obavezno podesite DATABASE_URL u `shared-prisma/.env` pre pokretanja migracija.
 ### "Cannot find module '@prisma/client'"
 
 Pokrenite:
+
 ```bash
 npm run prisma:generate
 ```
@@ -179,3 +186,5 @@ Proverite da li je DATABASE_URL ispravno podešen u `shared-prisma/.env`.
 ## Contributing
 
 Pošto je ovo monorepo, važno je održavati konzistentnost između aplikacija. Primenjujte best practices i testirajte izmene u obe aplikacije kada menjate shared-prisma.
+
+npx eslint . --fix

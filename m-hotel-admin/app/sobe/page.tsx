@@ -2,7 +2,7 @@
 import { ucitajSobe, obrisiSobu } from '@/actions/sobe';
 import { getLocaleMessages } from '@/i18n/i18n';
 import { Metadata } from 'next';
-import { Button } from '@/components/ui/button';
+import { Button } from '@hotel/ui';
 import { SuccessMessage, ErrorMessage } from '@/components/messages/MessageComponents';
 import SobeContent from './SobeContent';
 import { getRequestLocale } from '@/lib/locale';

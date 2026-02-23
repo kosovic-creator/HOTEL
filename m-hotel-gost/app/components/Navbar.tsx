@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@hotel/ui";
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";

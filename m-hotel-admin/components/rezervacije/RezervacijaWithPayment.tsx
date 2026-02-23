@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@hotel/ui';
 import RezervacijaDetalji, { useRezervacijaDetalji } from './RezervacijaDetalji';
 import RezervacijaPlacanje from './RezervacijaPlacanje';
 

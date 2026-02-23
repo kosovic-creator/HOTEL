@@ -6,6 +6,7 @@
   "packageManager": "npm@11.0.0",
   "workspaces": [
     "shared-prisma",
+    "shared-ui",
     "m-hotel-admin",
     "m-hotel-gost"
   ],
