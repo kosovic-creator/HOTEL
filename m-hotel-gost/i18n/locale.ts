@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
+import { type Language, DEFAULT_LANGUAGE, LANGUAGE_COOKIE } from './locale.constants';
 
-export type Language = 'sr' | 'en';
+export { type Language, DEFAULT_LANGUAGE, LANGUAGE_COOKIE };
 
 /**
  * Čita jezik iz cookies na serveru
@@ -8,11 +9,11 @@ export type Language = 'sr' | 'en';
  */
 export async function getLocale(): Promise<Language> {
   const cookieStore = await cookies();
-  const lang = cookieStore.get('lang')?.value;
+  const lang = cookieStore.get(LANGUAGE_COOKIE)?.value;
 
   if (lang === 'en' || lang === 'sr') {
     return lang;
   }
 
-  return 'sr'; // default jezik
+  return DEFAULT_LANGUAGE;
 }

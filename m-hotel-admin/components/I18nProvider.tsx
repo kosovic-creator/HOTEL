@@ -2,8 +2,8 @@
 
 import type { ReactNode } from "react";
 import { createContext, useCallback, useContext, useLayoutEffect, useMemo, useState } from "react";
-import i18n from "@/i18n/config";
-import { DEFAULT_LANGUAGE, LANGUAGE_COOKIE, type Language } from "@/lib/localeShared";
+import i18n from "@hotel/config/i18n-client";
+import { DEFAULT_LANGUAGE, LANGUAGE_COOKIE, type Language } from "@/lib/locale.constants";
 
 type I18nContextValue = {
   lang: Language;

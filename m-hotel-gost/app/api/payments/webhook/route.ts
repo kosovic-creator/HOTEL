@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import Stripe from 'stripe';
-import prisma from '@/lib/prisma';
-import { sendPaymentConfirmationEmail } from '@/lib/email';
+import prisma from '@hotel/lib/prisma';
+import { sendPaymentConfirmationEmail } from '@hotel/lib';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2020-08-27' as Stripe.LatestApiVersion,

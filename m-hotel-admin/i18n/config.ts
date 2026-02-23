@@ -1,8 +1,8 @@
 'use client';
 
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import { getDefaultConfig } from '@hotel/config/i18n-client';
 
 import enCommon from './locales/en/common.json';
 import enAuth from './locales/en/auth.json';
@@ -17,18 +17,14 @@ import srRezervacije from './locales/sr/rezervacije.json';
 import srGosti from './locales/sr/gosti.json';
 import enGosti from './locales/en/gosti.json';
 
-
 const resources = {
   en: {
     common: enCommon,
     auth: enAuth,
     sobe: enSobe,
-
-
     navbar: enNavbar,
     rezervacije: enRezervacije,
     gosti: enGosti,
-
   },
   sr: {
     common: srCommon,
@@ -40,25 +36,12 @@ const resources = {
   },
 };
 
+const namespaces = ['common', 'auth', 'sobe', 'navbar', 'rezervacije', 'gosti'];
+
 if (!i18n.isInitialized) {
   i18n
     .use(initReactI18next)
-    .init({
-      lng: 'sr',
-      fallbackLng: 'sr',
-      supportedLngs: ['en', 'sr'],
-      debug: false,
-      ns: ['common', 'auth', 'sobe', 'navbar', 'rezervacije', 'gosti'],
-      defaultNS: 'common',
-      resources,
-      backend: false, // onemogući backend loader i na klijentu
-      interpolation: {
-        escapeValue: false,
-      },
-      react: {
-        useSuspense: false,
-      },
-    });
+    .init(getDefaultConfig(resources, namespaces, 'sr'));
 }
 
 export default i18n;

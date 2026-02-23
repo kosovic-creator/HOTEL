@@ -1,10 +1,10 @@
 import { FormWrapper, InputField } from '@/components/form/FormComponents';
 import { getLocaleMessages } from '@/i18n/i18n';
-import { prisma } from '@/lib/prisma';
-import { extractErrors, getFieldValue } from '@/lib/helpers/url';
-import { GostiSearchParams } from '@/lib/types/searchParams';
-import { dodajGosta } from '@/actions/gosti';
+import prisma from '@hotel/lib/prisma';
+import { extractErrors, getFieldValue } from '@hotel/lib';
+import { GostiSearchParams } from '@/lib/types';
 import { getRequestLocale } from '@/lib/locale';
+import { dodajGosta } from '@/actions/gosti';
 
 const DodajGostaPage = async ({
   searchParams,

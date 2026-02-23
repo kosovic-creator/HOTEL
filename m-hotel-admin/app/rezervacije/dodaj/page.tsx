@@ -1,11 +1,11 @@
 import { dodajRezervacijuSaGostom } from '@/actions/rezervacije';
 import { FormWrapper, InputField, SelectField } from '@/components/form/FormComponents';
 import { getLocaleMessages } from '@/i18n/i18n';
-import { prisma } from '@/lib/prisma';
-import { RezervacijaSearchParams } from '@/lib/types/searchParams';
-import { extractErrors, getFieldValue } from '@/lib/helpers/url';
-import GostForm from './GostForm';
+import prisma from '@hotel/lib/prisma';
+import { extractErrors, getFieldValue } from '@hotel/lib';
+import { RezervacijaSearchParams } from '@/lib/types';
 import { getRequestLocale } from '@/lib/locale';
+import GostForm from './GostForm';
 
 const DodajRezervacijuPage = async ({
   searchParams,

@@ -1,4 +1,4 @@
-import type { Language } from "@/lib/types/searchParams";
+import type { Language } from "@hotel/lib";
 
 export type { Language };
 

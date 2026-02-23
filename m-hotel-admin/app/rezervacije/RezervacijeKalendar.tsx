@@ -2,7 +2,7 @@
 
 import { Calendar } from '@hotel/ui';
 import { Button } from '@hotel/ui';
-import { cn } from '@/lib/utils';
+import { cn } from '@hotel/lib';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { DayButton } from 'react-day-picker';

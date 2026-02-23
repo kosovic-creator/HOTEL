@@ -2,8 +2,8 @@ import { dodajSobu } from '@/actions/sobe';
 import { FormWrapper, InputField } from '@/components/form/FormComponents';
 import { getLocaleMessages } from '@/i18n/i18n';
 import { ImageUpload } from '@/app/components/ImageUpload';
-import { SobaSearchParams } from '@/lib/types/searchParams';
-import { extractErrors, getFieldValue } from '@/lib/helpers/url';
+import { extractErrors, getFieldValue } from '@hotel/lib';
+import { SobaSearchParams } from '@/lib/types';
 import { getRequestLocale } from '@/lib/locale';
 
 export default async function DodajSobuPage({ searchParams }: { searchParams: Promise<SobaSearchParams> }) {

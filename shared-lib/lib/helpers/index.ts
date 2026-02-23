@@ -2,4 +2,4 @@
  * Export svih helper funkcija
  */
 
-export * from './rezervacije';
+export * from './url';

@@ -2,7 +2,7 @@ import NextAuth, { type NextAuthOptions } from "next-auth";
 import type { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import prisma from '../../../../lib/prisma';
+import prisma from '@hotel/lib/prisma';
 import bcrypt from "bcrypt";
 
 export const authOptions: NextAuthOptions = {

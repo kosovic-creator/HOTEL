@@ -36,25 +36,6 @@ export function extractErrors(params: Record<string, string | undefined>): Recor
 }
 
 /**
- * Ekstrauje vrijednosti forme iz search params sa fallback na default vrijednosti
- */
-// export function extractFormValues<T extends Record<string, unknown>>(
-//   params: Record<string, string | undefined>,
-//   defaultValues: T
-// ): T {
-//   const formValues = { ...defaultValues };
-
-//   Object.keys(defaultValues).forEach((key) => {
-//     if (params[key] !== undefined && params[key] !== '') {
-//       // @ts-expect-error - Dynamic key access
-//       formValues[key] = params[key];
-//     }
-//   });
-
-//   return formValues;
-// }
-
-/**
  * Vraća vrijednost polja sa prioritetom: params > dbValue > ''
  */
 export function getFieldValue(

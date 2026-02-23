@@ -1,13 +1,7 @@
 import { cookies } from "next/headers";
-import {
-  DEFAULT_LANGUAGE,
-  LANGUAGE_COOKIE,
-  isSupportedLanguage,
-  type Language,
-} from "@/lib/localeShared";
+import { DEFAULT_LANGUAGE, LANGUAGE_COOKIE, isSupportedLanguage, type Language } from "./locale.constants";
 
-export { DEFAULT_LANGUAGE, LANGUAGE_COOKIE };
-export type { Language };
+export { DEFAULT_LANGUAGE, LANGUAGE_COOKIE, type Language };
 
 export async function getRequestLocale(): Promise<Language> {
   const cookieStore = await cookies();

@@ -1,8 +1,8 @@
 import { ucitajGostaId,updateGost} from '@/actions/gosti';
 import { FormWrapper, InputField, HiddenField } from '@/components/form/FormComponents';
 import { getLocaleMessages } from '@/i18n/i18n';
-import { extractErrors, getFieldValue } from '@/lib/helpers/url';
-import { GostiSearchParams } from '@/lib/types/searchParams';
+import { extractErrors, getFieldValue } from '@hotel/lib';
+import { GostiSearchParams } from '@/lib/types';
 import { getRequestLocale } from '@/lib/locale';
 
 export default async function IzmjeniGostaPage({ searchParams }: { searchParams: Promise<GostiSearchParams> }) {

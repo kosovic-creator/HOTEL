@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import prisma from '@/lib/prisma';
-import { sendPaymentConfirmationEmail } from '@/lib/email';
+import prisma from '@hotel/lib/prisma';
+import { sendPaymentConfirmationEmail } from '@hotel/lib';
 import { getLocaleMessages } from '@/i18n/i18n';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {

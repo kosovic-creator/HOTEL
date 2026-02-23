@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
-import { prisma } from '@/lib/prisma';
+import prisma from '@hotel/lib/prisma';
+import { createErrorRedirect, createSuccessRedirect, createFailureRedirect } from '@hotel/lib';
+import { getRequestLocale } from '@/lib/locale';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { createErrorRedirect, createSuccessRedirect, createFailureRedirect } from '@/lib/formHelpers';
-import { getRequestLocale } from '@/lib/locale';
 
 
 export const ucitajSobe = async () => {

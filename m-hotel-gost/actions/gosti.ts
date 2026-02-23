@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
-import prisma from '@/lib/prisma';
+import prisma from '@hotel/lib/prisma';
+import { createErrorRedirect, createFailureRedirect, createSuccessRedirect } from '@hotel/lib';
 import { getLocaleMessages } from '@/i18n/i18n';
 import { getLocale } from '@/i18n/locale';
-import { createErrorRedirect, createFailureRedirect, createSuccessRedirect } from '@/lib/formHelpers';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { gostSchema } from '@/app/validacija/gostSchema'; // Adjust path to match your project structure

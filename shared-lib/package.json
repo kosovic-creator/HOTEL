@@ -1,0 +1,32 @@
+{
+  "name": "@hotel/lib",
+  "version": "1.0.0",
+  "description": "Shared utilities, helpers, types and configuration for m-hotel-admin and m-hotel-gost",
+  "main": "index.ts",
+  "private": true,
+  "exports": {
+    ".": "./index.ts",
+    "./utils": "./lib/utils.ts",
+    "./formHelpers": "./lib/formHelpers.ts",
+    "./email": "./lib/email.ts",
+    "./prisma": "./lib/prisma.ts",
+    "./types": "./lib/types/index.ts",
+    "./types/*": "./lib/types/*",
+    "./helpers": "./lib/helpers/index.ts",
+    "./helpers/*": "./lib/helpers/*",
+    "./constants": "./lib/constants/index.ts"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.4.0",
+    "@prisma/client": "^7.4.0",
+    "clsx": "^2.1.1",
+    "nodemailer": "^7.0.13",
+    "tailwind-merge": "^3.4.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^7.0.9",
+    "@types/node": "^20",
+    "typescript": "^5"
+  }
+}

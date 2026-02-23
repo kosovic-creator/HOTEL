@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { sendPaymentConfirmationEmail } from '@/lib/email';
-import { prisma } from '@/lib/prisma';
+import prisma from '@hotel/lib/prisma';
+import { sendPaymentConfirmationEmail } from '@hotel/lib';
 
 /**
  * TEST ENDPOINT - Direktno testiranje email slanja za plaćanja

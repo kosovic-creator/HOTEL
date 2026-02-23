@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+'use server';
+
 import nodemailer from 'nodemailer';
 
 // Tipovi za email podatke

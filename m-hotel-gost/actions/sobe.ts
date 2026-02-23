@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
-import prisma from '@/lib/prisma';
+import prisma from '@hotel/lib/prisma';
+import { createErrorRedirect, createSuccessRedirect, createFailureRedirect } from '@hotel/lib';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { createErrorRedirect, createSuccessRedirect, createFailureRedirect } from '@/lib/formHelpers';
 import { getLocale } from '@/i18n/locale';
 
 
