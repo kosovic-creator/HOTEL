@@ -94,7 +94,6 @@ const IzmeniStrana = async ({
                     defaultValue={formData.prijava}
                     error={errors.prijava}
                     required
-                    className="text-center sm:text-left"
                 />
 
                 <InputField
@@ -104,7 +103,6 @@ const IzmeniStrana = async ({
                     defaultValue={formData.odjava}
                     error={errors.odjava}
                     required
-                    className="text-center sm:text-left"
                 />
 
                 <InputField

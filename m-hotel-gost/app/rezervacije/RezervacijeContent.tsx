@@ -116,18 +116,18 @@ export default function RezervacijeContent({
 
         {/* Search Section */}
         <div className="container mx-auto px-4 mb-20 -mt-8 relative z-30">
-          <div className="bg-white/98 backdrop-blur-md rounded-2xl shadow-2xl p-6 sm:p-8 border border-white/50">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-white/98 backdrop-blur-md rounded-2xl shadow-2xl p-4 sm:p-8 border border-white/50">
+            <h2 className="text-lg sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
               {tr('search_title')}
             </h2>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-5 sm:items-end">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5 sm:items-end">
               {/* Check-in Date */}
               <div className="group">
-                <label htmlFor="checkin" className="mb-3 flex items-center gap-2 text-sm font-bold text-gray-900">
-                  <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <label htmlFor="checkin" className="mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold text-gray-900">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                   {tr('start_date')} <span className="text-red-500">*</span>
@@ -143,14 +143,14 @@ export default function RezervacijeContent({
                       setPeriodEnd('');
                     }
                   }}
-                  className="w-full text-base border-2 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all"
+                  className="w-full max-w-full text-sm sm:text-base border-2 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all"
                 />
               </div>
 
               {/* Check-out Date */}
               <div className="group">
-                <label htmlFor="checkout" className="mb-3 flex items-center gap-2 text-sm font-bold text-gray-900">
-                  <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <label htmlFor="checkout" className="mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold text-gray-900">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                   {tr('end_date')} <span className="text-red-500">*</span>
@@ -161,14 +161,14 @@ export default function RezervacijeContent({
                   value={periodEnd}
                   min={periodStart || undefined}
                   onChange={(event) => setPeriodEnd(event.target.value)}
-                  className="w-full text-base border-2 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all"
+                  className="w-full max-w-full text-sm sm:text-base border-2 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all"
                 />
               </div>
 
               {/* Number of Guests */}
               <div className="group">
-                <label htmlFor="guests" className="mb-3 flex items-center gap-2 text-sm font-bold text-gray-900">
-                  <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <label htmlFor="guests" className="mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold text-gray-900">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 4H9m6 16H9m0-11h6m0 11v-6a2 2 0 10-4 0v6m4-6V8.75" />
                   </svg>
                   {tr('number_of_guests_label')} <span className="text-red-500">*</span>
@@ -190,7 +190,7 @@ export default function RezervacijeContent({
                     setNumberOfGuests(validValue);
                     setNumberOfGuestsInput(validValue.toString());
                   }}
-                  className="w-full text-base border-2 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all"
+                  className="w-full max-w-full text-sm sm:text-base border-2 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all"
                 />
               </div>
             </div>
