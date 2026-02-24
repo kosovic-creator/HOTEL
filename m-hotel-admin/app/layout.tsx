@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
   icons: {
     icon: "/favicon.svg",
-    apple: "/apple-touch-icon.svg",
+    apple: "/apple-touch-icon.png",
   },
 };
 
