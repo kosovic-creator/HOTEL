@@ -25,9 +25,12 @@
     "prisma:migrate:dev": "npm run migrate:dev -w shared-prisma",
     "prisma:migrate:deploy": "npm run migrate:deploy -w shared-prisma",
     "prisma:studio": "npm run studio -w shared-prisma",
-    "prisma:push": "npm run push -w shared-prisma"
+    "prisma:push": "npm run push -w shared-prisma",
+    "check-versions": "node scripts/check-versions.js"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
   }
 }
