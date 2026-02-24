@@ -172,7 +172,7 @@ export default function Navbar() {
             onClick={() => handleChangeLanguage("en")}
             className="flex items-center gap-1"
           >
-            <span role="img" aria-label="English">🇬🇧</span> EN
+            <span role="img" aria-label="English" className="text-2xl">🇬🇧</span> EN
           </Button>
         ) : (
             <Button
@@ -180,7 +180,7 @@ export default function Navbar() {
               onClick={() => handleChangeLanguage("sr")}
               className="flex items-center gap-1"
             >
-              <span role="img" aria-label="Serbian">🇲🇪</span> MN
+              <span role="img" aria-label="Serbian" className="text-2xl">🇲🇪</span> MN
             </Button>
         )}
       </div>

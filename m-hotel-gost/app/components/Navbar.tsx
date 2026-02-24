@@ -74,7 +74,7 @@ export default function Navbar() {
             onClick={() => handleChangeLanguage("en")}
             className="px-2 py-1 text-lg font-medium text-gray-300 hover:text-gray-300"
           >
-            <span role="img" aria-label="EN">
+            <span role="img" aria-label="EN" className="text-3xl">
               🇬🇧
             </span>
           </Button>
@@ -85,7 +85,7 @@ export default function Navbar() {
               onClick={() => handleChangeLanguage("sr")}
               className="px-2 py-1 text-lg font-medium text-gray-300 hover:text-gray-300"
             >
-              <span role="img" aria-label="SR">
+              <span role="img" aria-label="SR" className="text-3xl">
                 🇲🇪
               </span>
             </Button>
@@ -113,7 +113,7 @@ export default function Navbar() {
             onClick={() => handleChangeLanguage("en")}
             className="flex items-center gap-1 text-2xl text-white hover:text-white cursor-pointer"
           >
-            <span role="img" aria-label="EN">
+            <span role="img" aria-label="EN" className="text-4xl">
               🇬🇧
             </span>
           </Button>
@@ -123,7 +123,7 @@ export default function Navbar() {
               onClick={() => handleChangeLanguage("sr")}
               className="flex items-center gap-1 text-2xl text-white hover:text-white cursor-pointer"
             >
-              <span role="img" aria-label="MN">
+              <span role="img" aria-label="MN" className="text-4xl">
                 🇲🇪
               </span>
             </Button>
