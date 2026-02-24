@@ -1,190 +1,140 @@
-# Hotel Monorepo
+# M-Hotel Admin Monorepo
 
-Monorepo za hotel management sistem koji sadrži:
-
-- **m-hotel-admin** - Admin dashboard aplikacija (port 3000)
-- **m-hotel-gost** - Gost (client) aplikacija (port 4000)
-- **shared-prisma** - Zajednička Prisma database šema
+Ovaj projekat je organizovan kao monorepo sa pnpm workspaces.
 
 ## Struktura
 
 ```
-hotel-monorepo/
-├── m-hotel-admin/        # Admin aplikacija
-├── m-hotel-gost/         # Gost aplikacija
-├── shared-prisma/        # Zajednička Prisma šema
-└── package.json          # Root workspace konfiguracija
+.
+├── apps/
+│   └── web/           # Next.js web aplikacija
+├── packages/
+│   ├── database/      # Prisma šema i database client
+│   ├── ui/            # Zajedničke UI komponente
+│   └── config/        # Zajedničke konfiguracije
+└── pnpm-workspace.yaml
 ```
-
-## Prerequisites
-
-- Node.js 18+
-- npm 11+
-- PostgreSQL database
 
 ## Setup
 
-### 1. Instalacija zavisnosti
+### Prerequisites
 
+Instalirati pnpm ako već nije instaliran:
 ```bash
-npm install
+npm install -g pnpm
 ```
 
-Ova komanda će instalirati zavisnosti za sve workspace pakete.
-
-### 2. Database setup
-
-Kopirajte `.env.example` u `.env` u `shared-prisma/` folderu i podesite DATABASE_URL:
+### Instalacija zavisnosti
 
 ```bash
-cd shared-prisma
-cp .env.example .env
-# Editujte .env i podesite DATABASE_URL
+pnpm install
 ```
 
-### 3. Pokretanje migracija
+Ova komanda će instalirati zavisnosti za sve pakete u monorepo-u.
+
+## Development
+
+### Pokretanje development servera
 
 ```bash
-npm run prisma:generate
-npm run prisma:migrate:dev
+pnpm dev
 ```
 
-### 4. Pokretanje aplikacija
-
-Pokretanje obe aplikacije:
+### Build aplikacije
 
 ```bash
-npm run dev
+pnpm build
 ```
 
-Pokretanje samo admin aplikacije:
+### Pokretanje produkcijske verzije
 
 ```bash
-npm run dev:admin
+pnpm start
 ```
 
-Pokretanje samo gost aplikacije:
+## Database
+
+### Generisanje Prisma Client-a
 
 ```bash
-npm run dev:gost
+pnpm db:generate
 ```
 
-## Dostupne komande
-
-### Development
-
-- `npm run dev` - Pokreće obe aplikacije (admin na 3000, gost na 4000)
-- `npm run dev:admin` - Pokreće samo admin aplikaciju
-- `npm run dev:gost` - Pokreće samo gost aplikaciju
-
-### Build
-
-- `npm run build` - Build-uje obe aplikacije
-- `npm run build:admin` - Build-uje samo admin aplikaciju
-- `npm run build:gost` - Build-uje samo gost aplikaciju
-
-### Production
-
-- `npm run start:admin` - Pokreće admin u production modu
-- `npm run start:gost` - Pokreće gost u production modu
-
-### Database (Prisma)
-
-- `npm run prisma:generate` - Generiše Prisma Client
-- `npm run prisma:migrate:dev` - Kreira i primenjuje migracije
-- `npm run prisma:migrate:deploy` - Primenjuje migracije na production
-- `npm run prisma:studio` - Otvara Prisma Studio
-- `npm run prisma:push` - Push schema promena na database
-
-### Workspace komande
-
-Za rad sa pojedinačnim workspace paketima:
+### Push schema na database
 
 ```bash
-# Dodavanje zavisnosti u specifični paket
-npm install <package> -w m-hotel-admin
-npm install <package> -w m-hotel-gost
-npm install <package> -w shared-prisma
-
-# Pokretanje komandi u specifičnom paketu
-npm run <script> -w <workspace-name>
+pnpm db:push
 ```
 
-## Aplikacije
-
-### m-hotel-admin
-
-Admin dashboard aplikacija za upravljanje hotelom.
-
-- **URL**: <http://localhost:3000>
-- **Features**: Upravljanje sobama, gostima, rezervacijama
-
-### m-hotel-gost
-
-Client-facing aplikacija za goste hotela.
-
-- **URL**: <http://localhost:4000>
-- **Features**: Pregled soba, kreiranje rezervacija
-
-## Development workflow
-
-1. Izmene u `shared-prisma/schema.prisma`:
-
-   ```bash
-   npm run prisma:migrate:dev
-   npm run prisma:generate
-   ```
-
-2. Izmene u aplikacijama - hot reload će automatski raditi
-
-3. Dodavanje novih zavisnosti u aplikacije:
-
-   ```bash
-   npm install <package> -w m-hotel-admin
-   # ili
-   npm install <package> -w m-hotel-gost
-   ```
-
-## Environment Variables
-
-Svaka aplikacija ima svoj `.env` fajl:
-
-- `m-hotel-admin/.env`
-- `m-hotel-gost/.env`
-- `shared-prisma/.env`
-
-Obavezno podesite DATABASE_URL u `shared-prisma/.env` pre pokretanja migracija.
-
-## Troubleshooting
-
-### "Cannot find module '@prisma/client'"
-
-Pokrenite:
+### Pokretanje Prisma Studio
 
 ```bash
-npm run prisma:generate
+pnpm db:studio
 ```
 
-### Port već zauzet
+### Migracije
 
-Admin koristi port 3000, gost koristi port 4000. Ako su portovi zauzeti, možete ih promeniti u `package.json` skriptama svake aplikacije.
+```bash
+pnpm db:migrate
+```
 
-### Database connection error
+## Workspace Paketi
 
-Proverite da li je DATABASE_URL ispravno podešen u `shared-prisma/.env`.
+### @hotel/web
+Glavna Next.js aplikacija.
 
-## Tech Stack
+### @hotel/database
+Sadrži Prisma šemu i eksportuje Prisma Client sa konfigurisanim PostgreSQL adapterom.
 
-- **Framework**: Next.js 16
-- **Database**: PostgreSQL
-- **ORM**: Prisma
-- **Styling**: Tailwind CSS
-- **UI Components**: Radix UI
-- **Authentication**: NextAuth.js
-- **Payments**: Stripe (u admin aplikaciji)
+```typescript
+import { prisma } from '@hotel/database';
+```
 
-## Contributing
+### @hotel/ui
+Sadrži sve zajedničke UI komponente:
+- UI komponente (badge, button, calendar, card, itd.)
+- Form komponente
+- Table komponente
+- Message komponente
+- Rezervacije komponente
 
-Pošto je ovo monorepo, važno je održavati konzistentnost između aplikacija. Primenjujte best practices i testirajte izmene u obe aplikacije kada menjate shared-prisma.
+```typescript
+import { Button, Card } from '@hotel/ui';
+```
 
-npx eslint . --fix
+### @hotel/config
+Zajedničke konfiguracije (ESLint, TypeScript).
+
+## Dodavanje novih paketa
+
+### Dodavanje zavisnosti u odre��eni paket
+
+```bash
+# Za web app
+pnpm --filter @hotel/web add package-name
+
+# Za database
+pnpm --filter @hotel/database add package-name
+
+# Za ui
+pnpm --filter @hotel/ui add package-name
+```
+
+### Dodavanje dev zavisnosti
+
+```bash
+pnpm --filter @hotel/web add -D package-name
+```
+
+### Povezivanje između workspace paketa
+
+U package.json koristite `workspace:*` za lokalne pakete:
+
+```json
+{
+  "dependencies": {
+    "@hotel/database": "workspace:*",
+    "@hotel/ui": "workspace:*"
+  }
+}
+```
