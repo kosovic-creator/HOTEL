@@ -23,7 +23,7 @@ export default function Navbar() {
 
   const handleChangeLanguage = (lng: "en" | "sr") => {
     setLang(lng);
-    router.refresh();
+    // Removed router.refresh() to avoid loading state during language change
     setMenuOpen(false);
   };
 
@@ -105,22 +105,25 @@ export default function Navbar() {
                 {t("login") || "Prijava"}
             </Button>
           ))}
-          {/* Language buttons */}
+          {/* Language button - show only inactive language */}
           <div className="flex flex-col gap-2">
-            <Button
-              variant="ghost"
-              onClick={() => handleChangeLanguage("en")}
-              className={`flex items-center gap-1 ${mounted && lang === "en" ? "font-bold underline" : ""}`}
-            >
-              <span role="img" aria-label="English">🇬🇧</span> EN
-            </Button>
-            <Button
-              variant="ghost"
-              onClick={() => handleChangeLanguage("sr")}
-              className={`flex items-center gap-1 ${mounted && lang === "sr" ? "font-bold underline" : ""}`}
-            >
-              <span role="img" aria-label="Serbian">🇲🇪</span> MN
-            </Button>
+            {mounted && lang === "sr" ? (
+              <Button
+                variant="ghost"
+                onClick={() => handleChangeLanguage("en")}
+                className="flex items-center gap-1"
+              >
+                <span role="img" aria-label="English">🇬🇧</span> EN
+              </Button>
+            ) : (
+                <Button
+                  variant="ghost"
+                  onClick={() => handleChangeLanguage("sr")}
+                  className="flex items-center gap-1"
+                >
+                  <span role="img" aria-label="Serbian">🇲🇪</span> MN
+                </Button>
+            )}
           </div>
         </div>
       </div>
@@ -162,21 +165,24 @@ export default function Navbar() {
               {t("login") || "Prijava"}
             </Button>
         ))}
-        {/* Language buttons */}
-        <Button
-          variant="ghost"
-          onClick={() => handleChangeLanguage("en")}
-          className={`flex items-center gap-1 ${mounted && lang === "en" ? "font-bold underline" : ""}`}
-        >
-          <span role="img" aria-label="English">🇬🇧</span> EN
-        </Button>
-        <Button
-          variant="ghost"
-          onClick={() => handleChangeLanguage("sr")}
-          className={`flex items-center gap-1 ${mounted && lang === "sr" ? "font-bold underline" : ""}`}
-        >
-          <span role="img" aria-label="Serbian">🇲🇪</span> MN
-        </Button>
+        {/* Language button - show only inactive language */}
+        {mounted && lang === "sr" ? (
+          <Button
+            variant="ghost"
+            onClick={() => handleChangeLanguage("en")}
+            className="flex items-center gap-1"
+          >
+            <span role="img" aria-label="English">🇬🇧</span> EN
+          </Button>
+        ) : (
+            <Button
+              variant="ghost"
+              onClick={() => handleChangeLanguage("sr")}
+              className="flex items-center gap-1"
+            >
+              <span role="img" aria-label="Serbian">🇲🇪</span> MN
+            </Button>
+        )}
       </div>
 
 

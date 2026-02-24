@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { DayButton } from 'react-day-picker';
 import { Card, CardContent, CardHeader, CardTitle } from '@hotel/ui';
-import { useI18n } from '@/components/I18nProvider';
+import { useI18n } from '@/i18n/I18nProvider';
 import { useTranslation } from 'react-i18next';
 
 interface Rezervacija {

@@ -1,10 +1,5 @@
-import { cookies } from "next/headers";
-import { DEFAULT_LANGUAGE, LANGUAGE_COOKIE, isSupportedLanguage, type Language } from "./locale.constants";
+// Client-safe exports
+export { DEFAULT_LANGUAGE, LANGUAGE_COOKIE, type Language, isSupportedLanguage } from '@/i18n/locale';
 
-export { DEFAULT_LANGUAGE, LANGUAGE_COOKIE, type Language };
-
-export async function getRequestLocale(): Promise<Language> {
-  const cookieStore = await cookies();
-  const cookieLang = cookieStore.get(LANGUAGE_COOKIE)?.value;
-  return isSupportedLanguage(cookieLang) ? cookieLang : DEFAULT_LANGUAGE;
-}
+// Server-only exports - must be imported separately in server components
+export { getLocale, getRequestLocale } from '@/i18n/locale.server';

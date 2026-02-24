@@ -29,7 +29,7 @@ export default async function GostiPage({ searchParams }: { searchParams: Promis
     }));
 
     const lang = await getRequestLocale();
-    const t = getLocaleMessages(lang, 'gosti');
+    const t = await getLocaleMessages(lang, 'gosti');
     const successParam = params.success;
     const errorParam = params.error;
 

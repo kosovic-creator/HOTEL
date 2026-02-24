@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@hotel/ui';
 import RezervacijaWithPayment from '../components/RezervacijaWithPayment';
 import { SuccessMessage } from '@/components/messages/MessageComponents';
+import { Footer } from '@/app/components/footer';
 
 export const metadata: Metadata = {
   title: 'Detalji Rezervacije'
@@ -70,6 +71,7 @@ export default async function RezervacijaPage({ params, searchParams }: Rezervac
                   </CardContent>
               </Card>
       </div>
+          <Footer />
     </div>
   );
 }

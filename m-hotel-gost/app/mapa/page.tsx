@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Button } from "@hotel/ui";
+import { Footer } from '@/app/components/footer';
 
 const Map = dynamic(() => import("../components/Map"), { ssr: false });
 
@@ -19,6 +20,7 @@ export default function MapPage() {
           <Map posix={[42.37502101208353, 19.252633449195127]} />
         </div>
       </div>
+      <Footer />
     </main>
   );
 }

@@ -27,9 +27,9 @@ const IzmeniStrana = async ({
     // Ektauj greške iz query parametara
     const errors = extractErrors(params);
     const lang = await getRequestLocale();
-    const messages = getLocaleMessages(lang, 'rezervacije');
-    const gostMessages = getLocaleMessages(lang, 'gosti');
-    const commonMessages = getLocaleMessages(lang, 'common');
+    const messages = await getLocaleMessages(lang, 'rezervacije');
+    const gostMessages = await getLocaleMessages(lang, 'gosti');
+    const commonMessages = await getLocaleMessages(lang, 'common');
 
     // Popuni formData iz query parametara ili iz baze
     const formData: Record<string, string> = {

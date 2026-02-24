@@ -5,6 +5,7 @@ import Navbar from "@/app/components/Navbar";
 import { Providers } from "./providers";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
+import { getLocale } from "@/i18n/locale.server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,12 +35,14 @@ export default async function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const lang = await getLocale();
+
   return (
-    <html lang="en">
+    <html lang={lang} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>
+        <Providers initialLang={lang}>
           <Suspense fallback={null}>
             <Navbar />
           </Suspense>

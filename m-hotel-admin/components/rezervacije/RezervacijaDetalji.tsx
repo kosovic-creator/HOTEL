@@ -2,7 +2,7 @@
 
 import { dajPodatkeORezervaciji } from '@/lib/helpers/rezervacije';
 import PaymentStatusBadge from './PaymentStatusBadge';
-import { useI18n } from '@/components/I18nProvider';
+import { useI18n } from '@/i18n/I18nProvider';
 
 interface RezervacijaDetaljiProps {
   rezervacija: {

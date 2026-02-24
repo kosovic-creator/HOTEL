@@ -5,6 +5,7 @@ import { getLocale } from '@/i18n/locale';
 import prisma from '@hotel/lib/prisma';
 import { extractErrors, getFieldValue } from '@hotel/lib';
 import { RezervacijaSearchParams } from '@/lib/types';
+import { Footer } from '@/app/components/footer';
 
 
 const DodajRezervacijuPage = async ({
@@ -216,6 +217,7 @@ const DodajRezervacijuPage = async ({
           </form>
         </div>
       </div>
+      <Footer />
     </>
   );
 

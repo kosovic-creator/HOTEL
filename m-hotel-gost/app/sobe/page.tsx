@@ -3,6 +3,7 @@ import { ucitajSobe } from '@/actions/sobe';
 import { Metadata } from 'next';
 import { SuccessMessage, ErrorMessage } from '@/components/messages/MessageComponents';
 import SobeContent from './SobeContent';
+import { Footer } from '@/app/components/footer';
 
 export const metadata: Metadata = {
   title: 'Sobe'
@@ -30,6 +31,7 @@ export default async function SobeStrana({ searchParams }: { searchParams: Promi
       <SobeContent
         sobe={sobe}
       />
+      <Footer />
     </>
   );
 }

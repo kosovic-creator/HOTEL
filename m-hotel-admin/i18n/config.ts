@@ -2,7 +2,6 @@
 
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import { getDefaultConfig } from '@hotel/config/i18n-client';
 
 import enCommon from './locales/en/common.json';
 import enAuth from './locales/en/auth.json';
@@ -41,7 +40,22 @@ const namespaces = ['common', 'auth', 'sobe', 'navbar', 'rezervacije', 'gosti'];
 if (!i18n.isInitialized) {
   i18n
     .use(initReactI18next)
-    .init(getDefaultConfig(resources, namespaces, 'sr'));
+    .init({
+      lng: 'sr',
+      fallbackLng: 'sr',
+      supportedLngs: ['en', 'sr'],
+      debug: false,
+      ns: namespaces,
+      defaultNS: 'common',
+      resources,
+      backend: false,
+      interpolation: {
+        escapeValue: false,
+      },
+      react: {
+        useSuspense: false,
+      },
+    });
 }
 
 export default i18n;

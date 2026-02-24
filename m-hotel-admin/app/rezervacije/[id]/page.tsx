@@ -33,8 +33,8 @@ export default async function RezervacijaPage({ params }: RezervacijaPageProps) 
   }
 
     const lang = await getRequestLocale();
-  const t = getLocaleMessages(lang, 'rezervacije');
-  const commonT = getLocaleMessages(lang, 'common');
+    const t = await getLocaleMessages(lang, 'rezervacije');
+    const commonT = await getLocaleMessages(lang, 'common');
 
   return (
       <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50">

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';
 import { RezervacijaPlacanjeForms } from './RezervacijaPlacanjeForms';
-import { useI18n } from '@/components/I18nProvider';
+import { useI18n } from '@/i18n/I18nProvider';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 

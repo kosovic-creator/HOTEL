@@ -18,7 +18,7 @@ import { ConfirmDialog } from '@hotel/ui';
 import { useMemo, useState, useTransition, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { rascunajUkupnuCenu, rascunajUkupnePrihode } from '@/lib/helpers/rezervacije';
-import { useI18n } from '@/components/I18nProvider';
+import { useI18n } from '@/i18n/I18nProvider';
 import { useTranslation } from 'react-i18next';
 
 interface RezervacijeContentProps {

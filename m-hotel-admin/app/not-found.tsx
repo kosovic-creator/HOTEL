@@ -5,7 +5,7 @@ import { getRequestLocale } from "@/lib/locale";
 
 export default async function NotFound() {
   const lang = await getRequestLocale();
-  const t = getLocaleMessages(lang, 'common');
+  const t = await getLocaleMessages(lang, 'common');
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-linear-to-br from-gray-50 to-gray-100 p-8">
       <div className="text-center max-w-md">

@@ -19,13 +19,13 @@ export function Footer() {
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2">
             <div className="mb-4">
-              <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+              <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2" suppressHydrationWarning>
                 <svg className="w-8 h-8 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                 </svg>
                 {tr('footer_brand')}
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-gray-400 text-sm leading-relaxed" suppressHydrationWarning>
                 {tr('footer_description')}
               </p>
             </div>
@@ -33,30 +33,30 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4 flex items-center gap-2">
+            <h4 className="text-white font-semibold mb-4 flex items-center gap-2" suppressHydrationWarning>
               <span className="h-1 w-8 bg-amber-500 rounded" />
               {tr('footer_quick_links')}
             </h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="text-gray-400 hover:text-amber-500 transition-colors text-sm flex items-center gap-2">
-                  <span className="text-amber-500">›</span> {tr('footer_home')}
+                  <span className="text-amber-500">›</span> <span suppressHydrationWarning>{tr('footer_home')}</span>
                 </Link>
               </li>
               <li>
                 <Link href="/sobe" className="text-gray-400 hover:text-amber-500 transition-colors text-sm flex items-center gap-2">
-                  <span className="text-amber-500">›</span> {tr('footer_rooms')}
+                  <span className="text-amber-500">›</span> <span suppressHydrationWarning>{tr('footer_rooms')}</span>
                 </Link>
               </li>
               <li>
                 <Link href="/rezervacije" className="text-gray-400 hover:text-amber-500 transition-colors text-sm flex items-center gap-2">
-                  <span className="text-amber-500">›</span> {tr('footer_reservations')}
+                  <span className="text-amber-500">›</span> <span suppressHydrationWarning>{tr('footer_reservations')}</span>
                 </Link>
               </li>
 
               <li>
                 <Link href="/o_hotelu" className="text-gray-400 hover:text-amber-500 transition-colors text-sm flex items-center gap-2">
-                  <span className="text-amber-500">›</span> {tr('footer_about')}
+                  <span className="text-amber-500">›</span> <span suppressHydrationWarning>{tr('footer_about')}</span>
                 </Link>
               </li>
               <li>
@@ -68,7 +68,7 @@ export function Footer() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 10.5c0 5.5-7 11-7 11s-7-5.5-7-11a7 7 0 1114 0z" />
                   </svg>
-                  {tr('footer_map')}
+                  <span suppressHydrationWarning>{tr('footer_map')}</span>
                 </Link>
               </li>
             </ul>
@@ -76,12 +76,12 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-white font-semibold mb-4 flex items-center gap-2">
+            <h4 className="text-white font-semibold mb-4 flex items-center gap-2" suppressHydrationWarning>
               <span className="h-1 w-8 bg-amber-500 rounded" />
               {tr('footer_contact')}
             </h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-3" suppressHydrationWarning>
                 <svg className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
@@ -89,7 +89,7 @@ export function Footer() {
                   {tr('footer_email')}
                 </span>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-3" suppressHydrationWarning>
                 <svg className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
@@ -106,7 +106,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             {/* Social Links */}
             <div className="flex items-center gap-4">
-              <span className="text-gray-500 text-sm font-medium">{tr('footer_follow_us')}:</span>
+              <span className="text-gray-500 text-sm font-medium" suppressHydrationWarning>{tr('footer_follow_us')}:</span>
               <div className="flex gap-4">
                 <a href="#" className="w-10 h-10 bg-white/10 hover:bg-amber-500 rounded-full flex items-center justify-center transition-all hover:scale-110">
                   <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -130,13 +130,13 @@ export function Footer() {
 
             {/* Copyright */}
             <div className="text-center md:text-right">
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-500 text-sm" suppressHydrationWarning>
                 © {currentYear} <span className="text-amber-500 font-semibold">{tr('footer_brand')}</span>. {tr('footer_rights_reserved')}
               </p>
               <p className="text-gray-600 text-xs mt-2 flex items-center justify-center md:justify-end gap-2">
-                <span>{tr('footer_privacy_policy')}</span>
+                <span suppressHydrationWarning>{tr('footer_privacy_policy')}</span>
                 <span className="text-gray-700">•</span>
-                <span>{tr('footer_terms_conditions')}</span>
+                <span suppressHydrationWarning>{tr('footer_terms_conditions')}</span>
               </p>
             </div>
           </div>

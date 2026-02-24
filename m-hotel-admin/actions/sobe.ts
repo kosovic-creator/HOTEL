@@ -3,6 +3,8 @@
 import prisma from '@hotel/lib/prisma';
 import { createErrorRedirect, createSuccessRedirect, createFailureRedirect } from '@hotel/lib';
 import { getRequestLocale } from '@/lib/locale';
+import { getLocaleMessages } from '@/i18n/i18n';
+import { sobaSchema } from '@/app/validacija/sobeSchema';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
@@ -28,9 +30,6 @@ export const ucitajSobuId = async (searchParams: { sobaId: number }) => {
   }
 };
 export async function dodajSobu(formData: FormData) {
-  const { sobaSchema } = await import('@/app/validacija/sobeSchema');
-  const { getLocaleMessages } = await import('@/i18n/i18n');
-
   const broj = formData.get('broj') as string;
   const tip = formData.get('tip') as string;
   const kapacitet = Number(formData.get('kapacitet'));
@@ -69,9 +68,6 @@ export async function dodajSobu(formData: FormData) {
 }
 
 export const azurirajSobu = async (formData: FormData) => {
-  const { sobaSchema } = await import('@/app/validacija/sobeSchema');
-  const { getLocaleMessages } = await import('@/i18n/i18n');
-
   const id = Number(formData.get('id'));
   const broj = formData.get('broj') as string;
   const tip = formData.get('tip') as string;

@@ -4,6 +4,7 @@ import { ucitajSobe } from '@/actions/sobe';
 import { Metadata } from 'next';
 import { SuccessMessage, ErrorMessage } from '@/components/messages/MessageComponents';
 import RezervacijeContent from './RezervacijeContent';
+import { Footer } from '@/app/components/footer';
 
 export const metadata: Metadata = {
   title: 'Rezervacije'
@@ -51,6 +52,7 @@ export default async function RezervacijePage({ searchParams }: { searchParams: 
         rezervacije={rezervacije}
         sobe={sobe}
       />
+      <Footer />
     </>
   );
 }

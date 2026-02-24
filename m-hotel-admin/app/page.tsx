@@ -3,7 +3,7 @@ import { getRequestLocale } from "@/lib/locale";
 
 export default async function Home() {
   const lang = await getRequestLocale();
-  const t = getLocaleMessages(lang, 'common');
+  const t = await getLocaleMessages(lang, 'common');
   return (
     <>
       <div className="flex items-center justify-center min-h-screen">

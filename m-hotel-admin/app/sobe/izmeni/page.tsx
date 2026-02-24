@@ -9,8 +9,8 @@ import { getRequestLocale } from '@/lib/locale';
 export default async function IzmjeniSobuPage({ searchParams }: { searchParams: Promise<SobaSearchParams> }) {
     const params = await searchParams;
     const lang = await getRequestLocale();
-    const t = getLocaleMessages(lang, 'sobe');
-    const commonMessages = getLocaleMessages(lang, 'common');
+    const t = await getLocaleMessages(lang, 'sobe');
+    const commonMessages = await getLocaleMessages(lang, 'common');
     const id = Number(params.id || params.sobaId);
 
     if ((!params.id && !params.sobaId) || isNaN(id)) {

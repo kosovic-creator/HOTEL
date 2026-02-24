@@ -20,7 +20,7 @@ export default async function SobeStrana({ searchParams }: { searchParams: Promi
 
   const params = await searchParams;
   const lang = await getRequestLocale();
-  const t = getLocaleMessages(lang, 'sobe');
+  const t = await getLocaleMessages(lang, 'sobe');
   const successParam = params.success;
   const errorParam = params.error;
 

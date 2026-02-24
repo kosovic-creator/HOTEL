@@ -6,7 +6,11 @@
   "private": true,
   "exports": {
     "./i18n": "./i18n/i18n.ts",
-    "./i18n-client": "./i18n/config.ts"
+    "./i18n-client": "./i18n/config.ts",
+    "./i18n-provider": "./i18n/I18nProvider.tsx",
+    "./i18n-locale": "./i18n/locale.ts",
+    "./i18n-locale-server": "./i18n/locale.server.ts",
+    "./i18n-constants": "./i18n/locale.constants.ts"
   },
   "dependencies": {
     "i18next": "^25.7.3",

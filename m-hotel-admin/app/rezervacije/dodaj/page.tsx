@@ -14,8 +14,8 @@ const DodajRezervacijuPage = async ({
 }) => {
   const params = await searchParams;
   const lang = await getRequestLocale();
-  const messages = getLocaleMessages(lang, 'rezervacije');
-  const commonMessages = getLocaleMessages(lang, 'common');
+  const messages = await getLocaleMessages(lang, 'rezervacije');
+  const commonMessages = await getLocaleMessages(lang, 'common');
 
   const [sobe, gosti] = await Promise.all([
     prisma.soba.findMany(),

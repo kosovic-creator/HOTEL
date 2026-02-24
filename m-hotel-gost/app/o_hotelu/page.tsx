@@ -1,16 +1,21 @@
-import React from 'react'
-import { getLocale } from '@/i18n/locale';
-import { getLocaleMessages } from '@/i18n/i18n';
+'use client';
 
-const OHotelu = async () => {
-  const lang = await getLocale();
-  const t = await getLocaleMessages(lang, 'o_hotelu');
+import React from 'react'
+import { Footer } from '@/app/components/footer';
+import { useI18n } from '@/i18n/I18nProvider';
+
+const OHotelu = () => {
+  const { t } = useI18n();
+  const tr = (key: string) => t('o_hotelu', key);
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="max-w-2xl text-center text-amber-500 space-y-5 px-4 py-8 rounded-lg shadow-lg">
-        <p>{t.description}</p>
+    <>
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="max-w-2xl text-center text-amber-500 space-y-5 px-4 py-8 rounded-lg shadow-lg">
+          <p>{tr('description')}</p>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   )
 }
 

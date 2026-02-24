@@ -60,8 +60,8 @@ interface GostValues extends Omit<GostFormValues, 'id'> {
     telefon?: string;
 }
 
-const validateGost = (lang: Lang, values: GostValues) => {
-    const messages = getLocaleMessages(lang, 'gosti');
+const validateGost = async (lang: Lang, values: GostValues) => {
+    const messages = await getLocaleMessages(lang, 'gosti');
     const t = (key: string) => messages[key] || key;
     return gostSchema(t).safeParse(values);
 };
@@ -135,7 +135,7 @@ export async function dodajGosta(formData: FormData) {
     } = parseGostForm(formData);
     const lang = await getRequestLocale();
 
-    const result = validateGost(lang, {
+    const result = await validateGost(lang, {
         titula,
         ime,
         prezime,
@@ -210,7 +210,7 @@ export async function updateGost(formData: FormData) {
 
     requireValidId(id, '/gosti/izmeni');
 
-    const result = validateGost(lang, {
+    const result = await validateGost(lang, {
         titula,
         ime,
         prezime,

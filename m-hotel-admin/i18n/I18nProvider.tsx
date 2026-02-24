@@ -1,10 +1,9 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { createContext, useCallback, useContext, useLayoutEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
-import i18n from "@hotel/config/i18n-client";
-import { DEFAULT_LANGUAGE, LANGUAGE_COOKIE, type Language, isSupportedLanguage } from "@hotel/config/i18n-constants";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import i18n from "./config";
+import { DEFAULT_LANGUAGE, LANGUAGE_COOKIE, type Language, isSupportedLanguage } from "./locale.constants";
 
 interface I18nContextType {
   language: Language;
@@ -45,7 +44,6 @@ export function I18nProvider({
 }) {
   const [language, setLanguageState] = useState<Language>(initialLang);
   const [isHydrated, setIsHydrated] = useState(false);
-  const router = useRouter();
 
   const setLanguage = useCallback((nextLang: Language) => {
     setLangCookie(nextLang);
@@ -53,16 +51,16 @@ export function I18nProvider({
       i18n.changeLanguage(nextLang);
     }
     setLanguageState(nextLang);
-    router.refresh();
-  }, [router]);
+    // Removed router.refresh() to avoid loading state during language change
+  }, []);
 
-  useLayoutEffect(() => {
-    // Ensure i18n is always synced with initialLang at start
-    if (i18n.language !== initialLang) {
-      i18n.changeLanguage(initialLang);
+  useEffect(() => {
+    // Clean up old 'locale' cookie if it exists (legacy cleanup)
+    if (document.cookie.includes('locale=')) {
+      document.cookie = 'locale=; path=/; max-age=0';
     }
 
-    // On mount, read language from cookie and sync if different
+    // On mount, read language from cookie and sync if different from initialLang
     const cookieLang = getCookieLanguage();
 
     if (cookieLang !== initialLang) {
@@ -70,6 +68,9 @@ export function I18nProvider({
       if (i18n.language !== cookieLang) {
         i18n.changeLanguage(cookieLang);
       }
+    } else if (i18n.language !== initialLang) {
+      // Ensure i18n is synced with initialLang
+      i18n.changeLanguage(initialLang);
     }
 
     setIsHydrated(true);

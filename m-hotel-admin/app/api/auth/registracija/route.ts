@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     const { email, lozinka, ime, potvrdaLozinke } = await request.json();
     const lang = 'sr';
 
-    const messages = getLocaleMessages(lang, 'auth');
+    const messages = await getLocaleMessages(lang, 'auth');
     const t = (key: string) => messages[key] || key;
     const result = registerSchema(t).safeParse({ email, lozinka, ime, potvrdaLozinke });
 

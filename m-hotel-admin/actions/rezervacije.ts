@@ -72,7 +72,7 @@ export async function dodajRezervaciju(formData: FormData) {
   const status = formData.get('status');
   const lang = await getRequestLocale();
 
-  const messages = getLocaleMessages(lang, 'rezervacije');
+  const messages = await getLocaleMessages(lang, 'rezervacije');
   const t = (key: string) => messages[key] || key;
   const result = rezervacijaSchema(t).safeParse({
     soba,
@@ -190,7 +190,7 @@ export async function izmeniRezervaciju(formData: FormData) {
   const status = formData.get('status');
   const lang = await getRequestLocale();
 
-  const messages = getLocaleMessages(lang, 'rezervacije');
+  const messages = await getLocaleMessages(lang, 'rezervacije');
   const t = (key: string) => messages[key] || key;
   const result = rezervacijaSchema(t).safeParse({ soba, gost, prijava, odjava, broj_osoba, popust, status });
 
@@ -288,7 +288,7 @@ export async function dodajRezervacijuSaGostom(formData: FormData) {
   const postojeci_gost = formData.get('postojeci_gost');
   const koristi_postojeceg_gosta = formData.get('koristi_postojeceg_gosta') === 'true';
 
-  const messages = getLocaleMessages(lang, 'rezervacije');
+  const messages = await getLocaleMessages(lang, 'rezervacije');
   const t = (key: string) => messages[key] || key;
 
   const result = rezervacijaGostSchema(t).safeParse({
@@ -475,7 +475,7 @@ export async function izmeniRezervacijuSaGostom(formData: FormData) {
   const postojeci_gost = formData.get('postojeci_gost');
   const koristi_postojeceg_gosta = formData.get('koristi_postojeceg_gosta') === 'true';
 
-  const messages = getLocaleMessages(lang, 'rezervacije');
+  const messages = await getLocaleMessages(lang, 'rezervacije');
   const t = (key: string) => messages[key] || key;
 
   const result = rezervacijaGostSchema(t).safeParse({

@@ -7,7 +7,7 @@ import {
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
-import { useI18n } from '@/components/I18nProvider';
+import { useI18n } from '@/i18n/I18nProvider';
 
 interface RezervacijaPlacanjeFormsProps {
   rezervacija: {

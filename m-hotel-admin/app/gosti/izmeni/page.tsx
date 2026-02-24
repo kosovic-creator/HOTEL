@@ -8,8 +8,8 @@ import { getRequestLocale } from '@/lib/locale';
 export default async function IzmjeniGostaPage({ searchParams }: { searchParams: Promise<GostiSearchParams> }) {
     const params = await searchParams;
     const lang = await getRequestLocale();
-    const t = getLocaleMessages(lang, 'gosti');
-    const commonMessages = getLocaleMessages(lang, 'common');
+    const t = await getLocaleMessages(lang, 'gosti');
+    const commonMessages = await getLocaleMessages(lang, 'common');
     const id = Number(params.id || params.id);
 
     if ((!params.id && !params.id) || isNaN(id)) {

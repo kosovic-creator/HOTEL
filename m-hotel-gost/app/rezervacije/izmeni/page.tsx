@@ -5,6 +5,7 @@ import { getLocale } from '@/i18n/locale';
 import prisma from '@hotel/lib/prisma';
 import { extractErrors, getFieldValue } from '@hotel/lib';
 import { RezervacijaSearchParams } from '@/lib/types';
+import { Footer } from '@/app/components/footer';
 
 const IzmeniStrana = async ({
     searchParams
@@ -59,7 +60,8 @@ const IzmeniStrana = async ({
     };
 
     return (
-      <FormWrapper
+        <>
+            <FormWrapper
             title={`${messages.editReservation} ${commonMessages.id_label}: ${rezervacije?.id}`}
             action={izmeniRezervacijuSaGostom}
           submitLabel={messages.saveChanges}
@@ -323,6 +325,8 @@ const IzmeniStrana = async ({
                 `
             }} />
         </FormWrapper>
+            <Footer />
+        </>
     );
 };
 
