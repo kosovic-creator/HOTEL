@@ -96,6 +96,26 @@ export default function RezervacijeContent({
 
   return (
     <>
+      {/* Custom styles for date inputs on mobile */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        @media (max-width: 640px) {
+          .reservation-form input[type="date"],
+          .reservation-form input[type="number"] {
+            font-size: 12px !important;
+            min-width: 0 !important;
+            max-width: 100% !important;
+            padding-left: 8px !important;
+            padding-right: 8px !important;
+          }
+          .reservation-form input[type="date"]::-webkit-calendar-picker-indicator {
+            width: 14px;
+            height: 14px;
+            margin-left: 2px;
+          }
+        }
+      `}} />
+
       {/* Full Screen Hero Banner Background */}
       <div className="relative min-h-screen w-full pt-16">
         {/* Title Section with gradient overlay */}
@@ -115,17 +135,17 @@ export default function RezervacijeContent({
         </div>
 
         {/* Search Section */}
-        <div className="container mx-auto px-4 mb-20 -mt-8 relative z-30">
-          <div className="bg-white/98 backdrop-blur-md rounded-2xl shadow-2xl p-4 sm:p-8 border border-white/50">
+        <div className="container mx-auto px-2 sm:px-4 mb-20 -mt-8 relative z-30">
+          <div className="reservation-form bg-white/98 backdrop-blur-md rounded-2xl shadow-2xl p-3 sm:p-8 border border-white/50 overflow-hidden">
             <h2 className="text-lg sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
               <svg className="w-5 h-5 sm:w-6 sm:h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
               {tr('search_title')}
             </h2>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5 sm:items-end">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-5 sm:items-end">
               {/* Check-in Date */}
-              <div className="group">
+              <div className="group min-w-0">
                 <label htmlFor="checkin" className="mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold text-gray-900">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -143,12 +163,12 @@ export default function RezervacijeContent({
                       setPeriodEnd('');
                     }
                   }}
-                  className="w-full max-w-full text-sm sm:text-base border-2 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all"
+                  className="w-full min-w-0 max-w-full text-xs sm:text-base border-2 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all"
                 />
               </div>
 
               {/* Check-out Date */}
-              <div className="group">
+              <div className="group min-w-0">
                 <label htmlFor="checkout" className="mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold text-gray-900">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -161,12 +181,12 @@ export default function RezervacijeContent({
                   value={periodEnd}
                   min={periodStart || undefined}
                   onChange={(event) => setPeriodEnd(event.target.value)}
-                  className="w-full max-w-full text-sm sm:text-base border-2 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all"
+                  className="w-full min-w-0 max-w-full text-xs sm:text-base border-2 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all"
                 />
               </div>
 
               {/* Number of Guests */}
-              <div className="group">
+              <div className="group min-w-0">
                 <label htmlFor="guests" className="mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-bold text-gray-900">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 4H9m6 16H9m0-11h6m0 11v-6a2 2 0 10-4 0v6m4-6V8.75" />
@@ -190,7 +210,7 @@ export default function RezervacijeContent({
                     setNumberOfGuests(validValue);
                     setNumberOfGuestsInput(validValue.toString());
                   }}
-                  className="w-full max-w-full text-sm sm:text-base border-2 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all"
+                  className="w-full min-w-0 max-w-full text-xs sm:text-base border-2 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all"
                 />
               </div>
             </div>
