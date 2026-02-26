@@ -3,7 +3,7 @@
 
 import Image from 'next/image';
 import { Button } from '@hotel/ui';
-import { useI18n } from '@/i18n/I18nProvider';
+import { useTranslation } from 'react-i18next';
 
 interface SobeContentProps {
   sobe: any[];
@@ -12,8 +12,9 @@ interface SobeContentProps {
 export default function SobeContent({
   sobe
 }: SobeContentProps) {
-  const { language, t } = useI18n();
-  const tr = (key: string) => t('sobe', key);
+  const { t, i18n } = useTranslation('sobe');
+  const language = i18n.language;
+  const tr = (key: string) => t(key);
   return (
     <>
       {/* Full Screen Hero Banner Background */}

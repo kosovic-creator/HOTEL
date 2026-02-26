@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';
 import { RezervacijaPlacanjeForms } from './RezervacijaPlacanjeForms';
-import { useI18n } from '@/i18n/I18nProvider';
+import { useTranslation } from 'react-i18next';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -33,7 +33,8 @@ export default function RezervacijaPlacanje({
   onPaymentSuccess,
   onCancel,
 }: RezervacijaPlacanjeProps) {
-  const { lang } = useI18n();
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
   const [clientSecret, setClientSecret] = useState<string>('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>('');

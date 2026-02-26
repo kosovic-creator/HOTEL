@@ -1,92 +1,88 @@
 'use client';
 
-import { createContext, useContext, useState, useCallback, useMemo, useEffect, ReactNode } from 'react';
-import i18n from './config';
+import {
+    createContext,
+    useCallback,
+    useContext,
+    useEffect,
+    useMemo,
+    useState,
+    type ReactNode,
+} from 'react';
+import { I18nextProvider } from 'react-i18next';
+import i18n from '@/i18n/config';
+import {
+    DEFAULT_LANGUAGE,
+    LANGUAGE_COOKIE,
+    type Language,
+    isSupportedLanguage,
+} from '@/i18n/constants';
 
-type Language = 'sr' | 'en';
-
-interface I18nContextType {
-  language: Language;
-  lang?: Language; // Alias
-  setLanguage: (lang: Language) => void;
-  setLang?: (lang: Language) => void; // Alias
+type I18nContextType = {
+    language: Language;
+    setLanguage: (lang: Language) => void;
   t: (namespace: string, key: string) => string;
   isHydrated: boolean;
-}
+};
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
 function getCookieLanguage(): Language {
-  if (typeof document === 'undefined') return 'sr';
+    if (typeof document === 'undefined') {
+        return DEFAULT_LANGUAGE;
+    }
   const value = `; ${document.cookie}`;
-  const parts = value.split('; lang=');
+    const parts = value.split(`; ${LANGUAGE_COOKIE}=`);
   const lang = parts.length === 2 ? parts.pop()?.split(';')[0] : undefined;
-  return (lang === 'en' || lang === 'sr') ? lang : 'sr';
+    return isSupportedLanguage(lang) ? lang : DEFAULT_LANGUAGE;
 }
 
 export function I18nProvider({
   children,
-  initialLang = 'sr',
+    initialLang = DEFAULT_LANGUAGE,
 }: {
   children: ReactNode;
   initialLang?: Language;
-  }) {
+    }) {
   const [language, setLanguageState] = useState<Language>(initialLang);
   const [isHydrated, setIsHydrated] = useState(false);
 
   const setLanguage = useCallback((lang: Language) => {
-    document.cookie = `lang=${lang}; path=/; max-age=31536000; SameSite=Lax`;
+      if (typeof document !== 'undefined') {
+          document.cookie = `${LANGUAGE_COOKIE}=${lang}; path=/; max-age=31536000; SameSite=Lax`;
+      }
     setLanguageState(lang);
     if (i18n.language !== lang) {
       i18n.changeLanguage(lang);
     }
-    // Removed router.refresh() to avoid loading state during language change
   }, []);
 
-  // On mount, read language from cookie and sync with i18n
-  // Use useEffect instead of useLayoutEffect to avoid hydration mismatch
   useEffect(() => {
-    // Clean up old 'locale' cookie if it exists (legacy cleanup)
-    if (document.cookie.includes('locale=')) {
-      document.cookie = 'locale=; path=/; max-age=0';
+      const nextLang = getCookieLanguage() || initialLang;
+      setIsHydrated(true);
+      setLanguageState(nextLang);
+      if (i18n.language !== nextLang) {
+          i18n.changeLanguage(nextLang);
     }
-
-    // Read language from cookie
-    const cookieLang = getCookieLanguage();
-
-    // Only update if different from initialLang (server-provided value)
-    if (cookieLang !== initialLang) {
-      setLanguageState(cookieLang);
-      if (i18n.language !== cookieLang) {
-        i18n.changeLanguage(cookieLang);
-      }
-    } else if (i18n.language !== initialLang) {
-      // Ensure i18n is synced with initialLang
-      i18n.changeLanguage(initialLang);
-    }
-
-    setIsHydrated(true);
   }, [initialLang]);
 
-  const t = (namespace: string, key: string): string => {
+    const t = useCallback((namespace: string, key: string) => {
     return i18n.t(key, { ns: namespace }) || key;
-  };
+  }, []);
 
-  const value: I18nContextType = useMemo(() => {
+    const value = useMemo<I18nContextType>(() => {
     return {
-      language,
-      lang: language, // Alias
-      setLanguage,
-      setLang: setLanguage, // Alias
+        language,
+        setLanguage,
       t,
-      isHydrated
+        isHydrated,
     };
-  }, [language, setLanguage, isHydrated]);
+  }, [language, setLanguage, t, isHydrated]);
 
   return (
-    <I18nContext.Provider value={value}>
-      {children}
-    </I18nContext.Provider>
+      <I18nextProvider i18n={i18n}>
+          <I18nContext.Provider value={value}>{children}</I18nContext.Provider>
+      </I18nextProvider>
   );
 }
 

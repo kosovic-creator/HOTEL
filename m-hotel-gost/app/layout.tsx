@@ -3,8 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/app/components/Navbar";
 import { Suspense } from "react";
-import { I18nProvider } from "@/i18n/I18nProvider";
-import { getLocale } from "@/i18n/locale.server";
+import { Providers } from "./providers";
+import { getServerLanguage } from "@/i18n/i18n.server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +34,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const lang = await getLocale();
+  const lang = await getServerLanguage();
 
   return (
     <html lang={lang} suppressHydrationWarning>
@@ -49,14 +49,14 @@ export default async function RootLayout({
           minHeight: '100vh',
         }}
       >
-        <I18nProvider initialLang={lang}>
+        <Providers initialLang={lang}>
           <Suspense fallback={null}>
             <div className="absolute top-0 left-0 right-0 z-50">
               <Navbar />
             </div>
           </Suspense>
           {children}
-        </I18nProvider>
+        </Providers>
       </body>
     </html>
   );

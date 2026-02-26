@@ -2,18 +2,27 @@
 
 import { Button } from "@hotel/ui";
 import Link from "next/link";
-import { useState } from "react";
-import { useI18n } from "@/i18n/I18nProvider";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { type Language } from "@/i18n/constants";
+import { useSafeI18n } from "@/hooks/useSafeI18n";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { language, setLanguage, t } = useI18n();
-  const tr = (key: string) => t('navbar', key);
+  const { t, i18n } = useTranslation("navbar");
+  const { lang, setLang } = useSafeI18n();
+  const [mounted, setMounted] = useState(false);
+  const language = (mounted ? lang : i18n.language) as Language;
+  const tr = (key: string) => t(key);
 
   const handleChangeLanguage = (lng: "en" | "sr") => {
-    setLanguage(lng);
+    setLang(lng);
     setMenuOpen(false);
   };
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <nav className="w-full bg-transparent px-4 py-3 flex justify-between items-center md:px-6 md:py-4 relative z-20 print:hidden">
@@ -24,7 +33,7 @@ export default function Navbar() {
                 <svg className="w-8 h-8 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                 </svg>
-                {tr('footer_brand')}
+            {mounted ? tr("footer_brand") : "M-HOTEL"}
               </h3>
         </Link>
 
@@ -36,9 +45,7 @@ export default function Navbar() {
           className="text-amber-500 hover:text-amber-500 text-lg sm:text-base"
           suppressHydrationWarning
         >
-          <Link href="/sobe">
-            {tr('rooms')}
-          </Link>
+          <Link href="/sobe">{mounted ? tr("rooms") : "Sobe"}</Link>
         </Button>
 
       </div>
@@ -67,7 +74,7 @@ export default function Navbar() {
       {/* Mobile nav controls */}
       <div className="sm:hidden flex items-center gap-2" suppressHydrationWarning>
         {/* Language button for mobile - show only inactive language */}
-        {language === "sr" ? (
+        {mounted && language === "sr" ? (
           <Button
             variant="ghost"
             size="sm"
@@ -78,7 +85,7 @@ export default function Navbar() {
               🇬🇧
             </span>
           </Button>
-        ) : (
+        ) : mounted ? (
             <Button
               variant="ghost"
               size="sm"
@@ -89,13 +96,13 @@ export default function Navbar() {
                 🇲🇪
               </span>
             </Button>
-        )}
+        ) : null}
 
         {/* Hamburger icon */}
         <button
           className="flex flex-col justify-center items-center w-10 h-10 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400"
           onClick={() => setMenuOpen((v) => !v)}
-          aria-label={tr('open_menu')}
+          aria-label={mounted ? tr("open_menu") : "Open menu"}
           suppressHydrationWarning
         >
           <span className="block w-6 h-0.5 bg-white mb-1"></span>
@@ -107,7 +114,7 @@ export default function Navbar() {
       {/* Desktop nav */}
       <div className="hidden sm:flex items-center gap-4" suppressHydrationWarning>
         {/* Show only inactive language flag */}
-        {language === "sr" ? (
+        {mounted && language === "sr" ? (
           <Button
             variant="ghost"
             onClick={() => handleChangeLanguage("en")}
@@ -117,7 +124,7 @@ export default function Navbar() {
               🇬🇧
             </span>
           </Button>
-        ) : (
+        ) : mounted ? (
             <Button
               variant="ghost"
               onClick={() => handleChangeLanguage("sr")}
@@ -127,7 +134,7 @@ export default function Navbar() {
                 🇲🇪
               </span>
             </Button>
-        )}
+        ) : null}
       </div>
     </nav>
   );

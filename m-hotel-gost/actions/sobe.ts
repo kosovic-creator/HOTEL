@@ -4,7 +4,7 @@ import prisma from '@hotel/lib/prisma';
 import { createErrorRedirect, createSuccessRedirect, createFailureRedirect } from '@hotel/lib';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { getLocale } from '@/i18n/locale';
+import { getServerLanguage } from '@/i18n/i18n.server';
 
 
 export const ucitajSobe = async () => {
@@ -39,7 +39,7 @@ export async function dodajSobu(formData: FormData) {
   const slikeRaw = formData.get('slike') as string;
   const tip_en = formData.get('tip_en') as string;
   const opis_en = formData.get('opis_en') as string;
-  const lang = await getLocale();
+  const lang = await getServerLanguage();
 
   const slike = slikeRaw ? slikeRaw.split(',').map(s => s.trim()).filter(Boolean) : [];
 
@@ -81,7 +81,7 @@ export const azurirajSobu = async (formData: FormData) => {
   const tip_en = formData.get('tip_en') as string;
   const opis_en = formData.get('opis_en') as string;
   const slikeRaw = formData.get('slike') as string;
-  const lang = await getLocale();
+  const lang = await getServerLanguage();
 
   const slike = slikeRaw ? slikeRaw.split(',').map(s => s.trim()).filter(Boolean) : [];
 

@@ -8,7 +8,7 @@ import { redirect } from 'next/navigation';
 import { rezervacijaSchema } from '@/app/validacija/rezervacijaSchema';
 import { rezervacijaGostSchema } from '@/app/validacija/rezervacijaGostSchema';
 import { getLocaleMessages } from '@/i18n/i18n';
-import { getLocale } from '@/i18n/locale';
+import { getServerLanguage } from '@/i18n/i18n.server';
 
 
 export const ucitajRezervacije = async (search?: string) => {
@@ -70,7 +70,7 @@ export async function dodajRezervaciju(formData: FormData) {
   const broj_osoba = formData.get('broj_osoba');
   const popust = formData.get('popust');
   const status = formData.get('status');
-  const lang = await getLocale();
+  const lang = await getServerLanguage();
 
   const messages = await getLocaleMessages(lang, 'rezervacije');
   const t = (key: string) => messages[key] || key;
@@ -190,7 +190,7 @@ export async function izmeniRezervaciju(formData: FormData) {
   const broj_osoba = formData.get('broj_osoba');
   const popust = formData.get('popust');
   const status = formData.get('status');
-  const lang = await getLocale();
+  const lang = await getServerLanguage();
 
   const messages = await getLocaleMessages(lang, 'rezervacije');
   const t = (key: string) => messages[key] || key;
@@ -272,7 +272,7 @@ export async function dodajRezervacijuSaGostom(formData: FormData) {
   const broj_osoba = formData.get('broj_osoba');
   const popust = formData.get('popust');
   const status = formData.get('status');
-  const lang = await getLocale();
+  const lang = await getServerLanguage();
 
   // Podaci o gostu
   const gost_titula = formData.get('gost_titula');
@@ -482,7 +482,7 @@ export async function izmeniRezervacijuSaGostom(formData: FormData) {
   const broj_osoba = formData.get('broj_osoba');
   const popust = formData.get('popust');
   const status = formData.get('status');
-  const lang = await getLocale();
+  const lang = await getServerLanguage();
 
   // Podaci o gostu
   const gost_id = formData.get('gost_id'); // ID postojećeg gosta ili 'new' za novog

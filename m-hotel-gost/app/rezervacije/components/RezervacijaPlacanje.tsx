@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';
 import { RezervacijaPlacanjeForms } from './RezervacijaPlacanjeForms';
-import { useI18n } from '@/i18n/I18nProvider';
+import { useTranslation } from 'react-i18next';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -31,12 +31,22 @@ export default function RezervacijaPlacanje({
   onPaymentSuccess,
   onCancel,
 }: RezervacijaPlacanjeProps) {
-  const { language, t } = useI18n();
+  const [mounted, setMounted] = useState(false);
+  const { t, i18n } = useTranslation('rezervacije');
+  const language = i18n.language;
   const [clientSecret, setClientSecret] = useState<string>('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>('');
 
-  const tr = (key: string) => t('rezervacije', key);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  const tr = (key: string) => t(key);
 
   const formatPrice = (value: number) =>
     new Intl.NumberFormat(language === 'sr' ? 'sr-ME' : 'en-US', {

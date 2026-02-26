@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { X, Upload } from 'lucide-react';
 import { Button } from '@hotel/ui';
 import Image from 'next/image';
-import { useI18n } from '@/i18n/I18nProvider';
+import { useTranslation } from 'react-i18next';
 
 interface ImageUploadProps {
   name: string;
@@ -14,8 +14,8 @@ interface ImageUploadProps {
 }
 
 export function ImageUpload({ name, defaultValue = '', error, label }: ImageUploadProps) {
-  const { t } = useI18n();
-  const tr = (key: string) => t('common', key);
+  const { t } = useTranslation('common');
+  const tr = (key: string) => t(key);
   const [images, setImages] = useState<string[]>(
     defaultValue ? defaultValue.split(',').map(img => img.trim()).filter(Boolean) : []
   );

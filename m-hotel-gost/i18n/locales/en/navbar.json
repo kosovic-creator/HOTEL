@@ -1,12 +1,13 @@
 {
+  "home": "Home",
   "rooms": "Rooms",
-  "guests": "Guests",
-  "logout": "Logout",
-  "login": "Login",
+  "about_hotel": "About Hotel",
   "reservations": "Reservations",
-  "about": "About the Hotel",
-  "open_menu": "Open menu",
-  "language_en": "EN",
-  "language_sr": "MN",
- "footer_brand": "M-Hotel"
+  "login": "Login",
+  "logout": "Logout",
+  "register": "Register",
+  "profile": "Profile",
+  "title": "M-HOTEL",
+  "footer_brand": "M-HOTEL",
+  "open_menu": "Open menu"
 }

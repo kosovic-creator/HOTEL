@@ -1,6 +1,5 @@
 import { dajDetaljeRezervacije } from '@/actions/rezervacije';
-import { getLocaleMessages } from '@/i18n/i18n';
-import { getLocale } from '@/i18n/locale';
+import { getLocaleMessages, getServerLanguage } from '@/i18n/i18n.server';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@hotel/ui';
@@ -11,6 +10,9 @@ import { Footer } from '@/app/components/footer';
 export const metadata: Metadata = {
   title: 'Detalji Rezervacije'
 };
+
+// Force dynamic rendering to respect cookie changes
+export const dynamic = 'force-dynamic';
 
 interface RezervacijaPageProps {
   params: Promise<{ id: string }>;
@@ -33,7 +35,7 @@ export default async function RezervacijaPage({ params, searchParams }: Rezervac
     notFound();
   }
 
-    const lang = await getLocale();
+    const lang = await getServerLanguage();
   const t = await getLocaleMessages(lang, 'rezervacije');
   const commonT = await getLocaleMessages(lang, 'common');
     const successKey = resolvedSearchParams?.success;
@@ -53,10 +55,10 @@ export default async function RezervacijaPage({ params, searchParams }: Rezervac
                           </div>
                           <div>
                               <span className="text-lg font-semibold">
-                                  {t.reservation_details || 'Detalji Rezervacije'}
+                                  {t.reservation_details || 'Reservation Details'}
                               </span>
                               <div className="text-blue-100 text-sm font-normal mt-1">
-                                  {rezervacija.gost.ime} {rezervacija.gost.prezime} • Soba {rezervacija.soba.broj} • #{rezervacija.id}
+                                  {rezervacija.gost.ime} {rezervacija.gost.prezime} • {t.room || 'Room'} {rezervacija.soba.broj} • #{rezervacija.id}
                               </div>
                           </div>
                       </CardTitle>

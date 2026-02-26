@@ -1,8 +1,16 @@
 {
-  "rooms": "Sobe",
-  "logout": "Odjava",
+  "home": "Početna",
+  "profile": "Profil",
   "login": "Prijava",
+  "logout": "Odjava",
+  "register": "Registracija",
+  "admin": "Admin",
+  "rooms": "Sobe",
   "reservations": "Rezervacije",
-  "guests": "Gosti"
-
+  "guests": "Gosti",
+  "search": "Pretraga",
+  "title": "M-HOTEL Admin",
+  "about_us": "O nama",
+  "footer_brand": "M-HOTEL",
+  "open_menu": "Otvori meni"
 }

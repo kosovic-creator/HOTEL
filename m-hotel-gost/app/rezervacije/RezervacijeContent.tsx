@@ -6,7 +6,7 @@ import { Input } from '@hotel/ui';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
-import { useI18n } from '@/i18n/I18nProvider';
+import { useTranslation } from 'react-i18next';
 
 interface RezervacijeContentProps {
   sobe: Array<{
@@ -27,8 +27,9 @@ export default function RezervacijeContent({
   sobe,
   rezervacije = []
 }: RezervacijeContentProps) {
-  const { language, t } = useI18n();
-  const tr = (key: string) => t('rezervacije', key);
+  const { t, i18n } = useTranslation('rezervacije');
+  const language = i18n.language;
+  const tr = (key: string) => t(key);
   const [periodStart, setPeriodStart] = useState('');
   const [periodEnd, setPeriodEnd] = useState('');
   const [numberOfGuests, setNumberOfGuests] = useState(1);

@@ -1,9 +1,8 @@
 "use client";
+import { type ReactNode } from "react";
 import { SessionProvider } from "next-auth/react";
-import "@/i18n/config"; // Dodaj OVO ovde!
 import { I18nProvider } from "@/i18n/I18nProvider";
-import type { ReactNode } from "react";
-import { type Language, DEFAULT_LANGUAGE } from "@/i18n/locale";
+import { DEFAULT_LANGUAGE, type Language } from "@/i18n/constants";
 
 export function Providers({
   children,

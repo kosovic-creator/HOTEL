@@ -115,7 +115,7 @@ export default function Navbar() {
               >
                 <span role="img" aria-label="English">🇬🇧</span> EN
               </Button>
-            ) : (
+            ) : mounted ? (
                 <Button
                   variant="ghost"
                   onClick={() => handleChangeLanguage("sr")}
@@ -123,7 +123,7 @@ export default function Navbar() {
                 >
                   <span role="img" aria-label="Serbian">🇲🇪</span> MN
                 </Button>
-            )}
+            ) : null}
           </div>
         </div>
       </div>
@@ -174,7 +174,7 @@ export default function Navbar() {
           >
             <span role="img" aria-label="English" className="text-2xl">🇬🇧</span> EN
           </Button>
-        ) : (
+        ) : mounted ? (
             <Button
               variant="ghost"
               onClick={() => handleChangeLanguage("sr")}
@@ -182,7 +182,7 @@ export default function Navbar() {
             >
               <span role="img" aria-label="Serbian" className="text-2xl">🇲🇪</span> MN
             </Button>
-        )}
+        ) : null}
       </div>
 
 

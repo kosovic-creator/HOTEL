@@ -4,7 +4,7 @@
 import prisma from '@hotel/lib/prisma';
 import { createErrorRedirect, createFailureRedirect, createSuccessRedirect } from '@hotel/lib';
 import { getLocaleMessages } from '@/i18n/i18n';
-import { getLocale } from '@/i18n/locale';
+import { getServerLanguage } from '@/i18n/i18n.server';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { gostSchema } from '@/app/validacija/gostSchema'; // Adjust path to match your project structure
@@ -60,11 +60,10 @@ interface GostValues extends Omit<GostFormValues, 'id'> {
     telefon?: string;
 }
 
-const validateGost = (lang: Lang, values: GostValues) => {
-    return getLocaleMessages(lang, 'gosti').then(messages => {
-        const t = (key: string) => messages[key] || key;
-        return gostSchema(t).safeParse(values);
-    });
+const validateGost = async (lang: Lang, values: GostValues) => {
+    const messages = (await getLocaleMessages(lang, 'gosti')) as Record<string, string>;
+    const t = (key: string) => messages[key] || key;
+    return gostSchema(t).safeParse(values);
 };
 
 const requireValidId = async (id: number | undefined, failurePath = '/gosti') => {
@@ -134,7 +133,7 @@ export async function dodajGosta(formData: FormData) {
         email,
         telefon
     } = parseGostForm(formData);
-    const lang = await getLocale();
+    const lang = await getServerLanguage();
 
     const result = await validateGost(lang, {
         titula,
@@ -207,7 +206,7 @@ export async function updateGost(formData: FormData) {
         email,
         telefon
     } = parseGostForm(formData);
-    const lang = await getLocale();
+    const lang = await getServerLanguage();
 
     await requireValidId(id, '/gosti/izmeni');
 

@@ -1,11 +1,11 @@
 'use client';
 
 import Link from "next/link";
-import { useI18n } from "@/i18n/I18nProvider";
+import { useTranslation } from "react-i18next";
 
 export default function HomeContent() {
-  const { t } = useI18n();
-  const tr = (key: string) => t('common', key);
+  const { t } = useTranslation('common');
+  const tr = (key: string) => t(key);
 
   return (
     <div className="relative w-full h-screen overflow-hidden">

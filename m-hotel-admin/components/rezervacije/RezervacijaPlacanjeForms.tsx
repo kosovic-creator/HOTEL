@@ -7,7 +7,7 @@ import {
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
-import { useI18n } from '@/i18n/I18nProvider';
+import { useTranslation } from 'react-i18next';
 
 interface RezervacijaPlacanjeFormsProps {
   rezervacija: {
@@ -33,7 +33,8 @@ export function RezervacijaPlacanjeForms({
   onPaymentSuccess,
   onCancel,
 }: RezervacijaPlacanjeFormsProps) {
-  const { lang } = useI18n();
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
   const stripe = useStripe();
   const elements = useElements();
 

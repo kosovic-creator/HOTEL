@@ -1,4 +1,25 @@
 {
-    "title": "O hotelu",
-    "description": "Naš hotel je modernog enterijera sa prefinjenim luksuzom, prostranih i raskošno opremljenih soba i apartmana uz unikatna kupatila koja su za svaku sobu posebno rađena. Vaš potpuni ugođaj će upotpuniti naš ostali sadržaj."
+"title": "O hotelu",
+"about_hotel": "O hotelu",
+"welcome": "Dobrodošli u M-HOTEL",
+"description": "Luksuzni hotel sa prelijepim pogledom i vrhunskim sadržajem.",
+"our_story": "Naša priča",
+"amenities": "Pogodnosti",
+"restaurant": "Restoran",
+"spa": "Spa centar",
+"fitness": "Fitnes centar",
+"pool": "Bazen",
+"parking": "Parking",
+"wifi": "Besplatan Wi-Fi",
+"room_service": "Posluga u sobi",
+"location": "Lokacija",
+"contact": "Kontakt",
+"phone": "Telefon",
+"email": "Email",
+"address": "Adresa",
+"back": "Nazad",
+"services": "Usluge",
+"facilities": "Sadržaji",
+"reviews": "Recenzije",
+"gallery": "Galerija"
 }

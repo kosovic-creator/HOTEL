@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { DayButton } from 'react-day-picker';
 import { Card, CardContent, CardHeader, CardTitle } from '@hotel/ui';
-import { useI18n } from '@/i18n/I18nProvider';
 import { useTranslation } from 'react-i18next';
 
 interface Rezervacija {
@@ -34,8 +33,8 @@ export default function RezervacijeKalendar({
   rezervacije
 }: RezervacijeKalendarProps) {
     const router = useRouter();
-  const { lang } = useI18n();
-  const { t } = useTranslation('rezervacije');
+  const { t, i18n } = useTranslation('rezervacije');
+  const lang = i18n.language;
   const t_any = t as any; // Workaround for TypeScript not recognizing namespace keys
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);

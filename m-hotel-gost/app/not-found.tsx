@@ -1,10 +1,10 @@
 
 import Link from 'next/link';
 import { getLocaleMessages } from "@/i18n/i18n";
-import { getLocale } from '@/i18n/locale';
+import { getServerLanguage } from '@/i18n/i18n.server';
 
 export default async function NotFound() {
-  const lang = await getLocale();
+  const lang = await getServerLanguage();
   const t = await getLocaleMessages(lang, 'common');
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-linear-to-br from-gray-50 to-gray-100 p-8">

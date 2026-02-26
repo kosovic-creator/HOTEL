@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@hotel/ui';
 import RezervacijaDetalji, { useRezervacijaDetalji } from './RezervacijaDetalji';
 import RezervacijaPlacanje from './RezervacijaPlacanje';
-import { useI18n } from '@/i18n/I18nProvider';
+import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 
 interface RezervacijaWithPaymentProps {
@@ -27,11 +27,20 @@ export default function RezervacijaWithPayment({
   rezervacija,
   showPaymentOption = true,
 }: RezervacijaWithPaymentProps) {
-  const { t } = useI18n();
-  const trRez = (key: string) => t('rezervacije', key);
-  const trCommon = (key: string) => t('common', key);
+  const [mounted, setMounted] = useState(false);
+  const { t } = useTranslation(['rezervacije', 'common']);
+  const trRez = (key: string) => t(key, { ns: 'rezervacije' });
+  const trCommon = (key: string) => t(key, { ns: 'common' });
   const [showPayment, setShowPayment] = useState(false);
   const [paymentCompleted, setPaymentCompleted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   const podaci = useRezervacijaDetalji(rezervacija);
 

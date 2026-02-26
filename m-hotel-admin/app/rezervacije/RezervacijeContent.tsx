@@ -18,7 +18,6 @@ import { ConfirmDialog } from '@hotel/ui';
 import { useMemo, useState, useTransition, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { rascunajUkupnuCenu, rascunajUkupnePrihode } from '@/lib/helpers/rezervacije';
-import { useI18n } from '@/i18n/I18nProvider';
 import { useTranslation } from 'react-i18next';
 
 interface RezervacijeContentProps {
@@ -41,8 +40,8 @@ export default function RezervacijeContent({
   obrisiRezervaciju,
   initialSearch = ''
 }: RezervacijeContentProps) {
-  const { lang } = useI18n();
-  const { t } = useTranslation(['rezervacije', 'common']) as any;
+  const { t, i18n } = useTranslation(['rezervacije', 'common']) as any;
+  const lang = i18n.language;
   const [periodStart, setPeriodStart] = useState('');
   const [periodEnd, setPeriodEnd] = useState('');
   const [numberOfGuests, setNumberOfGuests] = useState(1);

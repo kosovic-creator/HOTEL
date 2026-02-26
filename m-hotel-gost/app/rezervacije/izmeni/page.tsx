@@ -1,11 +1,13 @@
 import { getRezervacijaById, izmeniRezervacijuSaGostom } from '@/actions/rezervacije';
 import { FormWrapper, InputField, HiddenField, SelectField } from '@/components/form/FormComponents';
-import { getLocaleMessages } from '@/i18n/i18n';
-import { getLocale } from '@/i18n/locale';
+import { getLocaleMessages, getServerLanguage } from '@/i18n/i18n.server';
 import prisma from '@hotel/lib/prisma';
 import { extractErrors, getFieldValue } from '@hotel/lib';
 import { RezervacijaSearchParams } from '@/lib/types';
 import { Footer } from '@/app/components/footer';
+
+// Force dynamic rendering to respect cookie changes
+export const dynamic = 'force-dynamic';
 
 const IzmeniStrana = async ({
     searchParams
@@ -15,7 +17,7 @@ const IzmeniStrana = async ({
     const params = await searchParams;
     const id = params?.id ? Number(params.id) : undefined;
 
-    const lang = await getLocale();
+    const lang = await getServerLanguage();
     const messages = await getLocaleMessages(lang, 'rezervacije');
     const gostMessages = await getLocaleMessages(lang, 'gosti');
     const commonMessages = await getLocaleMessages(lang, 'common');

@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { Footer } from '@/app/components/footer';
-import { useI18n } from '@/i18n/I18nProvider';
+import { useTranslation } from 'react-i18next';
 
 const OHotelu = () => {
-  const { t } = useI18n();
-  const tr = (key: string) => t('o_hotelu', key);
+  const { t } = useTranslation('o_hotelu');
+  const tr = (key: string) => t(key);
   return (
     <>
       <div className="flex justify-center items-center min-h-screen">

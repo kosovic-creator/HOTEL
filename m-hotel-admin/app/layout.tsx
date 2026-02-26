@@ -5,7 +5,7 @@ import Navbar from "@/app/components/Navbar";
 import { Providers } from "./providers";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
-import { getLocale } from "@/i18n/locale.server";
+import { getServerLanguage } from "@/i18n/i18n.server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +35,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const lang = await getLocale();
+  const lang = await getServerLanguage();
 
   return (
     <html lang={lang} suppressHydrationWarning>

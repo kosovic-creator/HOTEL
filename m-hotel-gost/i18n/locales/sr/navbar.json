@@ -1,13 +1,13 @@
 {
+  "home": "Početna",
   "rooms": "Sobe",
-  "logout": "Odjava",
-  "login": "Prijava",
+  "about_hotel": "O hotelu",
   "reservations": "Rezervacije",
-  "guests": "Gosti",
-  "about": "O hotelu",
-  "open_menu": "Otvori meni",
-  "language_en": "EN",
-  "language_sr": "MN",
-  "footer_brand": "M-Hotel"
-
+  "login": "Prijava",
+  "logout": "Odjava",
+  "register": "Registracija",
+  "profile": "Profil",
+  "title": "M-HOTEL",
+  "footer_brand": "M-HOTEL",
+  "open_menu": "Otvori meni"
 }

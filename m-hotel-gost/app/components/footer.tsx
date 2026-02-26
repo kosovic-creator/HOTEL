@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
-import { useI18n } from '@/i18n/I18nProvider';
+import { useTranslation } from "react-i18next";
 import Link from 'next/link';
 import { FaMapLocationDot, FaPhone, FaEnvelope, FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa6';
 export function Footer() {
-  const { t } = useI18n();
-  const tr = (key: string) => t('common', key);
+  const { t } = useTranslation("common");
+  const tr = (key: string) => t(key);
   const currentYear = new Date().getFullYear();
 
   return (

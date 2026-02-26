@@ -1,6 +1,7 @@
 'use client';
 
-import { useI18n } from '@/i18n/I18nProvider';
+import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 
 interface PaymentStatusBadgeProps {
   status: string;
@@ -11,8 +12,17 @@ export default function PaymentStatusBadge({
   status,
   className = ''
 }: PaymentStatusBadgeProps) {
-  const { t } = useI18n();
-  const tr = (key: string) => t('rezervacije', key);
+  const [mounted, setMounted] = useState(false);
+  const { t } = useTranslation('rezervacije');
+  const tr = (key: string) => t(key);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
   const getStatusDisplay = (status: string) => {
     const normalizedStatus = status.toLowerCase();
 

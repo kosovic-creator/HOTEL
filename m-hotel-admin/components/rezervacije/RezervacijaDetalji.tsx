@@ -2,7 +2,7 @@
 
 import { dajPodatkeORezervaciji } from '@/lib/helpers/rezervacije';
 import PaymentStatusBadge from './PaymentStatusBadge';
-import { useI18n } from '@/i18n/I18nProvider';
+import { useTranslation } from 'react-i18next';
 
 interface RezervacijaDetaljiProps {
   rezervacija: {
@@ -19,7 +19,8 @@ interface RezervacijaDetaljiProps {
 }
 
 export default function RezervacijaDetalji({ rezervacija, t }: RezervacijaDetaljiProps) {
-  const { lang } = useI18n();
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
   const formatPrice = (value: number) =>
     new Intl.NumberFormat(lang === 'sr' ? 'me-ME' : 'en-US', {
       style: 'currency',

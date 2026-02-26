@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   PaymentElement,
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
-import { useI18n } from '@/i18n/I18nProvider';
+import { useTranslation } from 'react-i18next';
 
 interface RezervacijaPlacanjeFormsProps {
   rezervacija: {
@@ -31,14 +31,24 @@ export function RezervacijaPlacanjeForms({
   onPaymentSuccess,
   onCancel,
 }: RezervacijaPlacanjeFormsProps) {
-  const { language, t } = useI18n();
+  const [mounted, setMounted] = useState(false);
+  const { t, i18n } = useTranslation('rezervacije');
+  const language = i18n.language;
   const stripe = useStripe();
   const elements = useElements();
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const tr = (key: string) => t('rezervacije', key);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  const tr = (key: string) => t(key);
 
   const formatPrice = (value: number) =>
     new Intl.NumberFormat(language === 'sr' ? 'sr-ME' : 'en-US', {

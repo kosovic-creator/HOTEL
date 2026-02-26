@@ -1,46 +1,43 @@
-'use client';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
+// Statički import prijevoda da izbgegnemo async probleme
 import enCommon from './locales/en/common.json';
-import enAuth from './locales/en/auth.json';
 import enNavbar from './locales/en/navbar.json';
-import enRezervacije from './locales/en/rezervacije.json';
-import enGosti from './locales/en/gosti.json';
 import enSobe from './locales/en/sobe.json';
+import enRezervacije from './locales/en/rezervacije.json';
 import enOHotelu from './locales/en/o_hotelu.json';
+import enGosti from './locales/en/gosti.json';
 
 import srCommon from './locales/sr/common.json';
-import srAuth from './locales/sr/auth.json';
 import srNavbar from './locales/sr/navbar.json';
-import srRezervacije from './locales/sr/rezervacije.json';
-import srGosti from './locales/sr/gosti.json';
 import srSobe from './locales/sr/sobe.json';
+import srRezervacije from './locales/sr/rezervacije.json';
 import srOHotelu from './locales/sr/o_hotelu.json';
+import srGosti from './locales/sr/gosti.json';
 
 const resources = {
   en: {
     common: enCommon,
-    auth: enAuth,
     navbar: enNavbar,
-    rezervacije: enRezervacije,
-    gosti: enGosti,
     sobe: enSobe,
+    rezervacije: enRezervacije,
     o_hotelu: enOHotelu,
+    gosti: enGosti,
   },
   sr: {
     common: srCommon,
-    auth: srAuth,
     navbar: srNavbar,
-    rezervacije: srRezervacije,
-    gosti: srGosti,
     sobe: srSobe,
+    rezervacije: srRezervacije,
     o_hotelu: srOHotelu,
+    gosti: srGosti,
   },
 };
 
-const namespaces = ['common', 'auth', 'navbar', 'rezervacije', 'gosti', 'sobe', 'o_hotelu'];
+const namespaces = ['common', 'navbar', 'sobe', 'rezervacije', 'o_hotelu', 'gosti'];
 
 if (!i18n.isInitialized) {
   i18n
@@ -61,6 +58,10 @@ if (!i18n.isInitialized) {
         useSuspense: false,
       },
     });
+  // Postavi default jezik sa log-om
+  if (typeof window !== 'undefined') {
+    console.log('[i18n] Initialized on client with language:', i18n.language);
+  }
 }
 
 export default i18n;
