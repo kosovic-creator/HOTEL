@@ -1,5 +1,6 @@
 {
 "title": "Guests",
+"gosti_lista": "Guests",
 "guests": "Guests",
 "guest": "Guest",
 "name": "Name",
@@ -13,6 +14,7 @@
 "passport": "Passport",
 "id_number": "ID Number",
 "add_guest": "Add Guest",
+"dodaj_gosta": "Add Guest",
 "edit_guest": "Edit Guest",
 "delete_guest": "Delete Guest",
 "view_details": "View Details",
@@ -29,5 +31,21 @@
 "notes": "Notes",
 "vip": "VIP",
 "date_of_birth": "Date of Birth",
-"nationality": "Nationality"
+"nationality": "Nationality",
+"telefon": "Phone",
+"titula": "Title",
+"ime": "First Name",
+"prezime": "Last Name",
+"drzava": "Country",
+"search_placeholder": "Search by first or last name...",
+"clear_search": "Clear search",
+"uredi_gosta": "Edit Guest",
+"obrisi_gosta": "Remove Guest",
+"editGuest": "Edit Guest",
+"removeGuest": "Remove Guest",
+"confirmDelete": "Confirm Delete",
+"confirmDeleteMessage": "Are you sure you want to delete this guest? This action cannot be undone.",
+"delete": "Delete",
+"cancel": "Cancel",
+"loading": "Loading..."
 }

@@ -40,8 +40,9 @@ export default function RezervacijeContent({
   obrisiRezervaciju,
   initialSearch = ''
 }: RezervacijeContentProps) {
-  const { t, i18n } = useTranslation(['rezervacije', 'common']) as any;
+  const { t, i18n } = useTranslation('rezervacije');
   const lang = i18n.language;
+  const [mounted, setMounted] = useState(false);
   const [periodStart, setPeriodStart] = useState('');
   const [periodEnd, setPeriodEnd] = useState('');
   const [numberOfGuests, setNumberOfGuests] = useState(1);
@@ -50,7 +51,6 @@ export default function RezervacijeContent({
   const [selectedReservationId, setSelectedReservationId] = useState<number | null>(null);
   const [searchValue, setSearchValue] = useState(initialSearch);
   const [isPending, startTransition] = useTransition();
-  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -175,12 +175,12 @@ export default function RezervacijeContent({
 
   const getStatusLabel = (status: string): string => {
     const statusLabels: Record<string, string> = {
-      'confirmed': t.confirmed || 'Confirmed',
-      'pending': t.pending || 'Pending',
-      'cancelled': t.cancelled || 'Cancelled',
-      'completed': t.completed || 'Completed',
-      'free_rooms': t.free_rooms || 'Free Rooms',
-      'no_free_rooms': t.no_free_rooms || 'No Free Rooms'
+      'confirmed': t('confirmed') || 'Confirmed',
+      'pending': t('pending') || 'Pending',
+      'cancelled': t('cancelled') || 'Cancelled',
+      'completed': t('completed') || 'Completed',
+      'free_rooms': t('free_rooms') || 'Free Rooms',
+      'no_free_rooms': t('no_free_rooms') || 'No Free Rooms'
     };
     return statusLabels[status] || status;
   };
@@ -197,13 +197,17 @@ export default function RezervacijeContent({
     return statusColors[status] || 'bg-gray-100 text-gray-800 border-gray-200';
   };
 
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <div className="w-full py-6 px-2 sm:px-4 lg:px-8">
       <div className="mb-4">
-        <h1 className="text-xl sm:text-2xl font-bold text-center">{t.title}</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-center">{t('title')}</h1>
         {/* Prikaz ukupnih prihoda */}
         <div className="mt-2 text-center">
-          <span className="text-sm text-gray-600">{t.ukupni_prihodi}: </span>
+          <span className="text-sm text-gray-600">{t('ukupni_prihodi')}: </span>
           <span className="text-lg font-semibold text-green-600">
             €{formatPrice(ukupniPrihodi)}
           </span>
@@ -217,7 +221,7 @@ export default function RezervacijeContent({
             id="rezervacije-search"
             name="rezervacije-search"
             type="text"
-            placeholder={t('search_placeholder') || 'Pretraži po imenu ili prezimenu gosta...'}
+            placeholder={t('search_placeholder') || 'Pretra\u017ei po imenu ili prezimenu gosta...'}
             value={searchValue}
             onChange={(e) => handleSearchChange(e.target.value)}
             className="pl-10 pr-10"
@@ -327,7 +331,7 @@ export default function RezervacijeContent({
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center justify-center gap-1">
-                          <Button asChild variant="outline" size="sm" aria-label={"View Details"} title={"View Details"}>
+                          <Button asChild variant="outline" size="sm" aria-label={t('view_details')} title={t('view_details')}>
                             <Link href={`/rezervacije/${rezervacija.id}`}>
                               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -335,7 +339,7 @@ export default function RezervacijeContent({
                               </svg>
                             </Link>
                           </Button>
-                          <Button asChild variant="secondary" size="sm" aria-label={t.editReservation} title={t.editReservation}>
+                          <Button asChild variant="secondary" size="sm" aria-label={t('editReservation')} title={t('editReservation')}>
                             <a href={`/rezervacije/izmeni?id=${rezervacija.id}`}>
                               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -346,8 +350,8 @@ export default function RezervacijeContent({
                             onClick={() => handleDeleteClick(rezervacija.id)}
                             variant="destructive"
                             size="sm"
-                            aria-label={t.removeReservation}
-                            title={t.removeReservation}
+                            aria-label={t('removeReservation')}
+                            title={t('removeReservation')}
                           >
                             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -377,27 +381,27 @@ export default function RezervacijeContent({
                   </Link>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-semibold">{t.guest_name}:</span>
+                  <span className="font-semibold">{t('guest_name')}:</span>
                   <span>{rezervacija.gost?.ime} {rezervacija.gost?.prezime}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-semibold">{t.room}:</span>
+                  <span className="font-semibold">{t('room')}:</span>
                   <span>{rezervacija.soba?.broj}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-semibold">{t.checkin_date}:</span>
+                  <span className="font-semibold">{t('checkin_date')}:</span>
                   <span>{rezervacija.datum_prijave ? new Date(rezervacija.datum_prijave).toISOString().slice(0, 10) : ''}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-semibold">{t.checkout_date}:</span>
+                  <span className="font-semibold">{t('checkout_date')}:</span>
                   <span>{rezervacija.datum_odjave ? new Date(rezervacija.datum_odjave).toISOString().slice(0, 10) : ''}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-semibold">{t.number_of_guests_label}:</span>
+                  <span className="font-semibold">{t('number_of_guests_label')}:</span>
                   <span>{rezervacija.broj_osoba}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-semibold">{t.status}:</span>
+                  <span className="font-semibold">{t('status')}:</span>
                   <span>
                     <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${getStatusBadge(rezervacija.status)}`}>
                       {getStatusLabel(rezervacija.status)}
@@ -406,7 +410,7 @@ export default function RezervacijeContent({
                 </div>
                 <div className="p-4 bg-gray-50 dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 flex gap-2">
                   <Link href={`/rezervacije/${rezervacija.id}`} className="flex-1">
-                    <Button variant="outline" className="w-full" size="sm" aria-label="View Details" title="View Details">
+                    <Button variant="outline" className="w-full" size="sm" aria-label={t('view_details')} title={t('view_details')}>
                       <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -414,7 +418,7 @@ export default function RezervacijeContent({
                     </Button>
                   </Link>
                   <Link href={`/rezervacije/izmeni?id=${rezervacija.id}`} className="flex-1">
-                    <Button variant="outline" className="w-full" size="sm" aria-label={t.editReservation} title={t.editReservation}>
+                    <Button variant="outline" className="w-full" size="sm" aria-label={t('editReservation')} title={t('editReservation')}>
                       <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                       </svg>
@@ -426,8 +430,8 @@ export default function RezervacijeContent({
                       variant="destructive"
                       className="w-full"
                       size="sm"
-                      aria-label={t.removeReservation}
-                      title={t.removeReservation}
+                      aria-label={t('removeReservation')}
+                      title={t('removeReservation')}
                     >
                       <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -451,7 +455,7 @@ export default function RezervacijeContent({
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
               <div className="flex-1">
                 <label className="mb-1 block text-sm font-medium" htmlFor="free-rooms-start">
-                  {t.start_date || t.checkin_date}
+                  {t('start_date') || t('checkin_date')}
                 </label>
                 <Input
                   id="free-rooms-start"
@@ -468,7 +472,7 @@ export default function RezervacijeContent({
               </div>
               <div className="flex-1">
                 <label className="mb-1 block text-sm font-medium" htmlFor="free-rooms-end">
-                  {t.end_date || t.checkout_date}
+                  {t('end_date') || t('checkout_date')}
                 </label>
                 <Input
                   id="free-rooms-end"
@@ -480,7 +484,7 @@ export default function RezervacijeContent({
               </div>
               <div className="flex-1 sm:max-w-40">
                 <label className="mb-1 block text-sm font-medium" htmlFor="free-rooms-guests">
-                  {t.number_of_guests_label || 'Broj osoba'}
+                  {t('number_of_guests_label') || 'Broj osoba'}
                 </label>
                 <Input
                   id="free-rooms-guests"
@@ -505,28 +509,28 @@ export default function RezervacijeContent({
 
             {!periodStart || !periodEnd ? (
               <p className="mt-4 text-sm text-muted-foreground">
-                {t.select_period || t.free_rooms}
+                {t('select_period') || t('free_rooms')}
               </p>
             ) : isStartInPast ? (
               <p className="mt-4 text-sm text-destructive">
-                {t.select_future_date || 'Molimo odaberite budući datum za pretragu dostupnih soba.'}
+                  {t('select_future_date') || 'Molimo odaberite budćći datum za pretragu dostupnih soba.'}
               </p>
             ) : !isRangeValid ? (
               <p className="mt-4 text-sm text-destructive">
-                {t.invalid_period || t.checkout_date}
+                    {t('invalid_period') || t('checkout_date')}
               </p>
             ) : freeRooms.length === 0 ? (
-              <p className="mt-4 text-sm text-muted-foreground">{t.no_free_rooms}</p>
+                    <p className="mt-4 text-sm text-muted-foreground">{t('no_free_rooms')}</p>
             ) : (
               <>
                 <div className="mt-6 hidden sm:block rounded-lg border bg-card shadow-sm">
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead className="text-center">{t.room}</TableHead>
-                        <TableHead className="text-center">{t.room_type || t.type}</TableHead>
-                        <TableHead className="text-center">{t.capacity || t.number_of_guests_label}</TableHead>
-                        <TableHead className="text-center">{t.price || t.cena}</TableHead>
+                                <TableHead className="text-center">{t('room')}</TableHead>
+                                <TableHead className="text-center">{t('room_type') || t('type')}</TableHead>
+                                <TableHead className="text-center">{t('capacity') || t('number_of_guests_label')}</TableHead>
+                                <TableHead className="text-center">{t('price') || t('cena')}</TableHead>
                         <TableHead className="text-center"></TableHead>
                       </TableRow>
                     </TableHeader>
@@ -542,11 +546,11 @@ export default function RezervacijeContent({
                           <TableCell className="text-center">
                             {canBookFromRange ? (
                               <Button asChild size="sm">
-                                <Link href={getBookingUrl(soba.broj)}>{t.book_room || t.book_now}</Link>
+                                <Link href={getBookingUrl(soba.broj)}>{t('book_room') || t('book_now')}</Link>
                               </Button>
                             ) : (
-                              <Button size="sm" disabled title={t.invalid_period || t.checkout_date}>
-                                {t.book_room || t.book_now}
+                                <Button size="sm" disabled title={t('invalid_period') || t('checkout_date')}>
+                                  {t('book_room') || t('book_now')}
                               </Button>
                             )}
                           </TableCell>
@@ -560,28 +564,28 @@ export default function RezervacijeContent({
                   {freeRooms.map((soba) => (
                     <div key={soba.id} className="rounded-lg border bg-card shadow-sm p-4 flex flex-col gap-2">
                       <div className="flex justify-between">
-                        <span className="font-semibold">{t.room}:</span>
+                        <span className="font-semibold">{t('room')}:</span>
                         <span>{soba.broj}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="font-semibold">{t.room_type || t.type}:</span>
+                        <span className="font-semibold">{t('room_type') || t('type')}:</span>
                         <span>{lang === 'en' ? soba.tip_en || soba.tip : soba.tip}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="font-semibold">{t.capacity || t.number_of_guests_label}:</span>
+                        <span className="font-semibold">{t('capacity') || t('number_of_guests_label')}:</span>
                         <span>{soba.kapacitet}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="font-semibold">{t.price || t.cena}:</span>
+                        <span className="font-semibold">{t('price') || t('cena')}:</span>
                         <span>{formatPrice(soba.cena)}</span>
                       </div>
                       {canBookFromRange ? (
                         <Button asChild size="sm" className="mt-2">
-                          <Link href={getBookingUrl(soba.broj)}>{t.book_room || t.book_now}</Link>
+                          <Link href={getBookingUrl(soba.broj)}>{t('book_room') || t('book_now')}</Link>
                         </Button>
                       ) : (
-                        <Button size="sm" className="mt-2" disabled title={t.invalid_period || t.checkout_date}>
-                          {t.book_room || t.book_now}
+                          <Button size="sm" className="mt-2" disabled title={t('invalid_period') || t('checkout_date')}>
+                            {t('book_room') || t('book_now')}
                         </Button>
                       )}
                     </div>
@@ -597,10 +601,11 @@ export default function RezervacijeContent({
         isOpen={isDeleteModalOpen}
         onClose={handleDeleteCancel}
         onConfirm={handleDeleteConfirm}
-        title={t.confirmDelete || 'Potvrdi brisanje'}
-        message={t.confirmDeleteMessage || 'Da li ste sigurni da želite da obrišete ovu rezervaciju? Ova akcija se ne može poništiti.'}
-        confirmText={t.delete || 'Obriši'}
-        cancelText={t.cancel || 'Otkaži'}
+        title={t('confirmDelete') || 'Potvrdi brisanje'}
+        message={t('confirmDeleteMessage') || 'Da li ste sigurni da želite da obrišete ovu rezervaciju? Ova akcija se ne može poništiti.'}
+        confirmText={t('delete') || 'Obriši'}
+        cancelText={t('cancel') || 'Otkaži'}
+        loadingText={t('loading') || 'Učitava...'}
         variant="destructive"
       />
     </div>

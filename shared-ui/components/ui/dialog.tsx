@@ -58,6 +58,7 @@ interface ConfirmDialogProps {
   message: string;
   confirmText?: string;
   cancelText?: string;
+  loadingText?: string;
   variant?: 'destructive' | 'default';
   isLoading?: boolean;
 }
@@ -70,6 +71,7 @@ export function ConfirmDialog({
   message,
   confirmText = 'Potvrdi',
   cancelText = 'Otkaži',
+  loadingText = 'Učitava...',
   variant = 'destructive',
   isLoading = false
 }: ConfirmDialogProps) {
@@ -92,7 +94,7 @@ export function ConfirmDialog({
             disabled={isLoading}
             size="sm"
           >
-            {isLoading ? 'Učitava...' : confirmText}
+            {isLoading ? loadingText : confirmText}
           </Button>
         </div>
       </div>

@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ucitajSobe, obrisiSobu } from '@/actions/sobe';
-import { getLocaleMessages } from '@/i18n/i18n';
 import { Metadata } from 'next';
 import { Button } from '@hotel/ui';
 import { SuccessMessage, ErrorMessage } from '@/components/messages/MessageComponents';
 import SobeContent from './SobeContent';
-import { getRequestLocale } from '@/lib/locale';
 
 export const metadata: Metadata = {
   title: 'Sobe'
@@ -19,8 +17,6 @@ export default async function SobeStrana({ searchParams }: { searchParams: Promi
   }));
 
   const params = await searchParams;
-  const lang = await getRequestLocale();
-  const t = await getLocaleMessages(lang, 'sobe');
   const successParam = params.success;
   const errorParam = params.error;
 
@@ -34,9 +30,9 @@ export default async function SobeStrana({ searchParams }: { searchParams: Promi
       )}
       <div className="w-full py-6 px-2 sm:px-4 lg:px-8">
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="text-xl sm:text-2xl font-bold text-center sm:text-left">{t.rooms}</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-center sm:text-left">Sobe</h1>
           <Button asChild className="w-full sm:w-auto">
-            <a href="/sobe/dodaj">{t.add}</a>
+            <a href="/sobe/dodaj">Dodaj novu sobu</a>
           </Button>
         </div>
 

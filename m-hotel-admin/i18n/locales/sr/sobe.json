@@ -1,6 +1,7 @@
 {
 "title": "Sobe",
   "rooms": "Sobe",
+  "add": "Dodaj sobu",
 "room": "Soba",
 "room_number": "Broj sobe",
 "room_type": "Tip sobe",
@@ -26,5 +27,18 @@
 "search": "Pretraži",
 "filter": "Filter",
 "all": "Sve",
-"back": "Nazad"
+"back": "Nazad",
+"number": "Broj sobe",
+"type": "Tip sobe",
+"images": "Slike",
+"description_en": "Opis (English)",
+"type_en": "Tip (English)",
+"no_images": "Nema slike",
+"editRoom": "Izmijeni sobu",
+"removeRoom": "Ukloni sobu",
+"confirmDelete": "Potvrdi brisanje",
+"confirmDeleteMessage": "Da li ste sigurni da želite obrisati ovu sobu? Ova akcija se ne može poništiti.",
+"delete": "Obriši",
+"cancel": "Otkaži",
+"loading": "Učitava..."
 }

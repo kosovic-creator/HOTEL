@@ -1,5 +1,6 @@
 {
 "title": "Gosti",
+"gosti_lista": "Gosti",
 "guests": "Gosti",
 "guest": "Gost",
 "name": "Ime",
@@ -13,6 +14,7 @@
 "passport": "Pasoš",
 "id_number": "Broj lične karte",
 "add_guest": "Dodaj gosta",
+"dodaj_gosta": "Dodaj gosta",
 "edit_guest": "Izmijeni gosta",
 "delete_guest": "Obriši gosta",
 "view_details": "Pogledaj detalje",
@@ -29,5 +31,21 @@
 "notes": "Napomene",
 "vip": "VIP",
 "date_of_birth": "Datum rođenja",
-"nationality": "Državljanstvo"
+"nationality": "Državljanstvo",
+"telefon": "Telefon",
+"titula": "Titula",
+"ime": "Ime",
+"prezime": "Prezime",
+"drzava": "Država",
+"search_placeholder": "Pretraži po imenu ili prezimenu...",
+"clear_search": "Očisti pretragu",
+"uredi_gosta": "Izmijeni gosta",
+"obrisi_gosta": "Ukloni gosta",
+"editGuest": "Izmijeni gosta",
+"removeGuest": "Ukloni gosta",
+"confirmDelete": "Potvrdi brisanje",
+"confirmDeleteMessage": "Da li ste sigurni da želite obrisati ovog gosta? Ova akcija se ne može poništiti.",
+"delete": "Obriši",
+"cancel": "Otkaži",
+"loading": "Učitava..."
 }

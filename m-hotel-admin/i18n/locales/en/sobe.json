@@ -1,6 +1,7 @@
 {
 "title": "Rooms",
   "rooms": "Rooms",
+  "add": "Add Room",
 "room": "Room",
 "room_number": "Room Number",
 "room_type": "Room Type",
@@ -26,5 +27,18 @@
 "search": "Search",
 "filter": "Filter",
 "all": "All",
-"back": "Back"
+"back": "Back",
+"number": "Room Number",
+"type": "Room Type",
+"images": "Images",
+"description_en": "Description (English)",
+"type_en": "Type (English)",
+"no_images": "No images",
+"editRoom": "Edit Room",
+"removeRoom": "Remove Room",
+"confirmDelete": "Confirm Delete",
+"confirmDeleteMessage": "Are you sure you want to delete this room? This action cannot be undone.",
+"delete": "Delete",
+"cancel": "Cancel",
+"loading": "Loading..."
 }
