@@ -83,6 +83,16 @@ export default function Navbar() {
           >
             &times;
           </button>
+
+          {/* Prikaz imena korisnika ako je prijavljen */}
+          {mounted && status !== "loading" && session?.user && (
+            <div className="mb-4 pb-4 border-b border-gray-200">
+              <span className="text-gray-900 font-semibold text-sm block">
+                {session.user.name || session.user.email}
+              </span>
+            </div>
+          )}
+
           <Button variant="ghost" size="sm" asChild onClick={() => setMenuOpen(false)}>
             <Link href="/sobe">{mounted ? t("rooms") : "Sobe"}</Link>
           </Button>
@@ -147,12 +157,6 @@ export default function Navbar() {
 
       {/* Desktop nav */}
       <div className="hidden sm:flex items-center gap-4" suppressHydrationWarning>
-        {/* Prikaz imena korisnika ako je prijavljen */}
-        {mounted && status !== "loading" && session?.user && (
-          <span className="text-gray-900 font-semibold mr-2">
-            {session.user.name || session.user.email}
-          </span>
-        )}
         {/* Auth buttons: show only one, with icon */}
         {mounted && status !== "loading" && (session?.user ? (
           <Button variant="ghost" onClick={handleSignOut} className="flex items-center gap-2">
