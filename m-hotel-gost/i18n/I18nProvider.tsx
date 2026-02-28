@@ -44,7 +44,13 @@ export function I18nProvider({
   children: ReactNode;
   initialLang?: Language;
     }) {
-  const [language, setLanguageState] = useState<Language>(initialLang);
+  const [language, setLanguageState] = useState<Language>(() => {
+    // Initialize i18n with the server-provided language immediately
+    if (i18n.language !== initialLang) {
+      i18n.changeLanguage(initialLang);
+    }
+    return initialLang;
+  });
   const [isHydrated, setIsHydrated] = useState(false);
 
   const setLanguage = useCallback((lang: Language) => {
@@ -58,11 +64,11 @@ export function I18nProvider({
   }, []);
 
   useEffect(() => {
-      const nextLang = getCookieLanguage() || initialLang;
+    // Mark as hydrated but trust the server's initialLang
       setIsHydrated(true);
-      setLanguageState(nextLang);
-      if (i18n.language !== nextLang) {
-          i18n.changeLanguage(nextLang);
+    // Only sync if initialLang changes (shouldn't happen after initial mount)
+    if (i18n.language !== initialLang) {
+      i18n.changeLanguage(initialLang);
     }
   }, [initialLang]);
 
