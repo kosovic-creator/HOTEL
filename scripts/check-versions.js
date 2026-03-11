@@ -23,8 +23,8 @@ function loadPackageJson(workspace) {
 }
 
 function compareVersions() {
-  const admin = loadPackageJson('m-hotel-admin');
-  const gost = loadPackageJson('m-hotel-gost');
+  const admin = loadPackageJson('apps/hotel-admin');
+  const gost = loadPackageJson('apps/hotel-gost');
 
   console.log(`${COLORS.cyan}═══════════════════════════════════════════════════════════════════════${COLORS.reset}`);
   console.log(`${COLORS.blue}🔍 Provjera verzija zavisnosti u HOTEL monorepo${COLORS.reset}`);

@@ -6,17 +6,17 @@
     "configurations": [
         {
             "type": "node-terminal",
-            "name": "Admin: dev (m-hotel-admin)",
+            "name": "Admin: dev (hotel-admin)",
             "request": "launch",
             "command": "npm run dev",
-            "cwd": "${workspaceFolder}/m-hotel-admin"
+            "cwd": "${workspaceFolder}/apps/hotel-admin"
         },
          {
             "type": "node-terminal",
-            "name": "Gost: dev (m-hotel-gost)",
+            "name": "Gost: dev (hotel-gost)",
             "request": "launch",
             "command": "npm run dev",
-            "cwd": "${workspaceFolder}/m-hotel-gost"
+            "cwd": "${workspaceFolder}/apps/hotel-gost"
         }
     ]
 }

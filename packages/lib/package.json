@@ -1,7 +1,7 @@
 {
   "name": "@hotel/lib",
   "version": "1.0.0",
-  "description": "Shared utilities, helpers, types and configuration for m-hotel-admin and m-hotel-gost",
+  "description": "Shared utilities, helpers, types and configuration for hotel-admin and hotel-gost",
   "main": "index.ts",
   "private": true,
   "exports": {

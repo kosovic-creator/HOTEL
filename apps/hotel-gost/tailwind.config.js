@@ -3,7 +3,7 @@ const tailwindConfig = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-    "../shared-ui/components/**/*.{js,ts,jsx,tsx}",
+    "../../packages/ui/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},

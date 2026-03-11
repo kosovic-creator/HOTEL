@@ -1,7 +1,7 @@
 {
   "name": "@hotel/prisma",
   "version": "1.0.0",
-  "description": "Shared Prisma schema and migrations for m-hotel-admin and m-hotel-gost",
+  "description": "Shared Prisma schema and migrations for hotel-admin and hotel-gost",
   "main": "index.js",
   "scripts": {
     "generate": "prisma generate",

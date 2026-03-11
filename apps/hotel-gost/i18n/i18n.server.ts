@@ -14,7 +14,7 @@ export function getLocaleMessages(lang: Language | string, namespace: string): R
   const directLocalesRoot = path.join(process.cwd(), 'i18n', 'locales');
   const localesRoot = fs.existsSync(directLocalesRoot)
     ? directLocalesRoot
-    : path.join(process.cwd(), 'm-hotel-gost', 'i18n', 'locales');
+    : path.join(process.cwd(), 'apps/hotel-gost', 'i18n', 'locales');
   const filePath = path.join(localesRoot, safeLang, `${namespace}.json`);
 
   try {
@@ -30,7 +30,7 @@ export function getLocaleMessages(lang: Language | string, namespace: string): R
  * Get language from cookies (server-side)
  * Falls back to 'sr' if no language is set
  */
-export async function getLanguageFromCookies(): Promise<Language> {
+export async function getServerLanguage(): Promise<Language> {
   try {
     const cookieStore = await cookies();
     const lang = cookieStore.get(LANGUAGE_COOKIE)?.value;
@@ -38,4 +38,11 @@ export async function getLanguageFromCookies(): Promise<Language> {
   } catch {
     return DEFAULT_LANGUAGE;
   }
+}
+
+/**
+ * Kompatibilna verzija sa getRequestLocale imenom
+ */
+export async function getRequestLanguage(): Promise<Language> {
+  return getServerLanguage();
 }

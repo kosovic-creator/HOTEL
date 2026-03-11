@@ -32,7 +32,10 @@
       ],
       "@actions/*": [
         "actions/*"
-      ]
+      ],
+      "@hotel/lib": ["../../packages/lib/index.ts"],
+      "@hotel/ui": ["../../packages/ui/index.ts"],
+      "@hotel/*": ["../../packages/*/index.ts"]
     }
   },
   "include": [

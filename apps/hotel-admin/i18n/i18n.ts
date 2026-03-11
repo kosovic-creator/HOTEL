@@ -14,7 +14,7 @@ export function getLocaleMessages(lang: Language | string, namespace: string) {
   const directLocalesRoot = path.join(process.cwd(), 'i18n', 'locales');
   const localesRoot = fs.existsSync(directLocalesRoot)
     ? directLocalesRoot
-    : path.join(process.cwd(), 'm-hotel-admin', 'i18n', 'locales');
+    : path.join(process.cwd(), 'apps/hotel-admin', 'i18n', 'locales');
   const filePath = path.join(localesRoot, safeLang, `${namespace}.json`);
   const raw = fs.readFileSync(filePath, 'utf-8');
   return JSON.parse(raw);
