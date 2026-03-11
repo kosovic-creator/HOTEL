@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { type Language } from "@/i18n/constants";
 import { useSafeI18n } from "@/hooks/useSafeI18n";
+import PWAInstallPrompt from "@/app/components/PWAInstallPrompt";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -73,6 +74,7 @@ export default function Navbar() {
 
       {/* Mobile nav controls */}
       <div className="sm:hidden flex items-center gap-2" suppressHydrationWarning>
+        <PWAInstallPrompt className="text-xs px-2" label={mounted ? tr("install_app") : "Install"} />
         {/* Language button for mobile - show only inactive language */}
         {mounted && language === "sr" ? (
           <Button
@@ -113,6 +115,7 @@ export default function Navbar() {
 
       {/* Desktop nav */}
       <div className="hidden sm:flex items-center gap-4" suppressHydrationWarning>
+        <PWAInstallPrompt label={mounted ? tr("install_app") : "Install app"} />
         {/* Show only inactive language flag */}
         {mounted && language === "sr" ? (
           <Button

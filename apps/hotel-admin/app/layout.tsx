@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/app/components/Navbar";
+import PWARegister from "@/app/components/PWARegister";
 import { Providers } from "./providers";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
@@ -24,10 +25,16 @@ export const metadata: Metadata = {
   },
   description: "Aplikacija za upravljanje M-HOTEL sistemom",
   metadataBase: new URL("http://localhost:3000"),
+  manifest: "/manifest.webmanifest",
+  applicationName: "M-HOTEL Admin",
   icons: {
     icon: "/favicon.svg",
     apple: "/apple-touch-icon.png",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0f172a",
 };
 
 export default async function RootLayout({
@@ -42,6 +49,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <PWARegister />
         <Providers initialLang={lang}>
           <Suspense fallback={null}>
             <Navbar />

@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { useSafeI18n } from "@/hooks/useSafeI18n";
+import PWAInstallPrompt from "@/app/components/PWAInstallPrompt";
 
 export default function Navbar() {
   const { data: session, status } = useSession();
@@ -117,6 +118,7 @@ export default function Navbar() {
           ))}
           {/* Language button - show only inactive language */}
           <div className="flex flex-col gap-2">
+            <PWAInstallPrompt className="w-full" />
             {mounted && lang === "sr" ? (
               <Button
                 variant="ghost"
@@ -157,6 +159,7 @@ export default function Navbar() {
 
       {/* Desktop nav */}
       <div className="hidden sm:flex items-center gap-4" suppressHydrationWarning>
+        <PWAInstallPrompt />
         {/* Auth buttons: show only one, with icon */}
         {mounted && status !== "loading" && (session?.user ? (
           <Button variant="ghost" onClick={handleSignOut} className="flex items-center gap-2">
