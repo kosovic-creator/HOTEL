@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/app/components/Navbar";
 import PWARegister from "@/app/components/PWARegister";
+import OfflineNotice from "@/app/components/OfflineNotice";
 import { Providers } from "./providers";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
@@ -50,6 +51,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <PWARegister />
+        <OfflineNotice />
         <Providers initialLang={lang}>
           <Suspense fallback={null}>
             <Navbar />

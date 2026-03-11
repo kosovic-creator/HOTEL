@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/app/components/Navbar";
 import PWARegister from "@/app/components/PWARegister";
+import OfflineNotice from "@/app/components/OfflineNotice";
 import { Suspense } from "react";
 import { Providers } from "./providers";
 import { getServerLanguage } from "@/i18n/i18n.server";
@@ -57,6 +58,7 @@ export default async function RootLayout({
         }}
       >
         <PWARegister />
+        <OfflineNotice />
         <Providers initialLang={lang}>
           <Suspense fallback={null}>
             <div className="absolute top-0 left-0 right-0 z-50">
