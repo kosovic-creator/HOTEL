@@ -1,0 +1,32 @@
+{
+  "name": "hotel-monorepo",
+  "version": "1.0.0",
+  "description": "Hotel monorepo - admin dashboard i gost aplikacija",
+  "private": true,
+  "packageManager": "npm@11.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=apps/hotel-admin\" \"npm run dev --workspace=apps/hotel-gost\"",
+    "dev:admin": "npm run dev --workspace=apps/hotel-admin",
+    "dev:gost": "npm run dev --workspace=apps/hotel-gost",
+    "build:admin": "npm run build --workspace=apps/hotel-admin",
+    "build:gost": "npm run build --workspace=apps/hotel-gost",
+    "build": "npm run build:admin && npm run build:gost",
+    "start:admin": "npm run start --workspace=apps/hotel-admin",
+    "start:gost": "npm run start --workspace=apps/hotel-gost",
+    "db:generate": "npm run generate --workspace=packages/database",
+    "db:migrate": "npm run migrate:dev --workspace=packages/database",
+    "db:deploy": "npm run migrate:deploy --workspace=packages/database",
+    "db:studio": "npm run studio --workspace=packages/database",
+    "db:push": "npm run push --workspace=packages/database",
+    "check-versions": "node scripts/check-versions.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+  }
+}

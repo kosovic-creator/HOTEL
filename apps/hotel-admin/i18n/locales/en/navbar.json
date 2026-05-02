@@ -1,0 +1,17 @@
+{
+  "home": "Home",
+  "profile": "Profile",
+  "login": "Login",
+  "logout": "Logout",
+  "register": "Register",
+  "admin": "Admin",
+  "rooms": "Rooms",
+  "reservations": "Reservations",
+  "guests": "Guests",
+  "search": "Search",
+  "title": "M-HOTEL Admin",
+  "about_us": "About Us",
+  "footer_brand": "M-HOTEL",
+  "install_app": "Install app",
+  "open_menu": "Open menu"
+}

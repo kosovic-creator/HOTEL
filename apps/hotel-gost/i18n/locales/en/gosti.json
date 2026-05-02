@@ -1,0 +1,19 @@
+{
+"guest_details": "Guest Details",
+"title": "Title",
+"select_title": "Select title",
+"title_mr": "Mr.",
+"title_mrs": "Mrs.",
+"title_ms": "Ms.",
+"title_dr": "Dr.",
+"first_name": "First Name",
+"last_name": "Last Name",
+"email": "Email",
+"phone": "Phone",
+"address": "Address",
+"city": "City",
+"country": "Country",
+"second_guest_title": "Second Guest Title",
+"second_guest_first_name": "Second Guest First Name",
+"second_guest_last_name": "Second Guest Last Name"
+}

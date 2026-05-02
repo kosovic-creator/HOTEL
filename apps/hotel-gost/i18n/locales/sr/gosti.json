@@ -1,0 +1,19 @@
+{
+"guest_details": "Podaci o gostu",
+"title": "Titula",
+"select_title": "Izaberite titulu",
+"title_mr": "G.",
+"title_mrs": "Gđa.",
+"title_ms": "Gđica",
+"title_dr": "Dr.",
+"first_name": "Ime",
+"last_name": "Prezime",
+"email": "Email",
+"phone": "Telefon",
+"address": "Adresa",
+"city": "Grad",
+"country": "Država",
+"second_guest_title": "Titula drugog gosta",
+"second_guest_first_name": "Ime drugog gosta",
+"second_guest_last_name": "Prezime drugog gosta"
+}
