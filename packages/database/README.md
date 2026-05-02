@@ -10,7 +10,7 @@ Ovaj paket sadrži zajedničku Prisma šemu koju koriste obe hotel aplikacije:
 2. Pokrenite migracije: `npm run migrate:dev`
 3. Generisite Prisma Client: `npm run generate`
 
-## Komande
+## Komande z
 
 - `npm run generate` - Generiše Prisma Client
 - `npm run migrate:dev` - Kreira novu migraciju i primenjuje je
